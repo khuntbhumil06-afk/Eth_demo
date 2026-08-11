@@ -3,6 +3,8 @@ import './pages/css/Home.css';
 import './pages/css/arrival.css';
 import './pages/css/seller.css';
 import './pages/css/snack.css';
+import './pages/css/chip.css'; 
+import './pages/css/premiumnuts.css'; 
 import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/Homepage';
 import CartPage from './pages/CartPage';
@@ -18,6 +20,8 @@ import SignupPage from './pages/SignupPage';
 import Seller from './pages/Seller';
 import CheckoutPage from './pages/CheckoutPage';
 import Snacks from './pages/Snacks';
+import Chips from './pages/Chips';
+import PremiumNuts from './pages/PremiumNuts';
 
 function App() {
   return (
@@ -33,9 +37,11 @@ function App() {
             <Route path='/signup' element={<SignupPage />} />
             <Route path='/seller' element={<Seller />} />
             <Route path='/product' element={<ProductPage />} />
+            <Route path='/chips' element={<Chips />} />
             <Route path='/promotions' element={<Promotional />} />
             <Route path='/about' element={<AboutPage />} />
             <Route path='/arrivals' element={<Arrivals />} />
+            <Route path='/nuts' element={<PremiumNuts />} />
             <Route path='/snacks' element={<Snacks />} />
             <Route path='/checkout' element={<CheckoutPage />} />
           </Routes>
