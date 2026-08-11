@@ -8,7 +8,7 @@ import { Truck, Lock, Globe } from "lucide-react";
 import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 
-const ProductPage = () => {
+const Snacks = () => {
     const navigate = useNavigate();
     const [openFaq, setOpenFaq] = useState(0);
     const { addToCart } = useCart();
@@ -39,23 +39,47 @@ const ProductPage = () => {
         "Dried Fruits",
         "Confectionery"
     ];
-    const [activeCategory, setActiveCategory] = useState("All");
+    const [activeCategory, setActiveCategory] = useState("Snacks");
 
-    const productlist = [
+    const snackslist = [
         {
             id: 1,
+            category: "Snacks",
+            name: "Tong Garden Black pepper Cashew Nuts, ",
+            size: "32g",
+            rating: 4.5,
+            brand: "Amore",
+            discount: 20,
+            image: saltedcocktailnuts,
+            price: 400.00,
+            inStock: true,
+        },
+        {
+            id: 2,
             name: "Tong Garden Salted Pistachios Can,",
             size: "150g",
             rating: 4.5,
             image: pistachios,
-            brand: "Nutri One",
+            brand: "Snacks",
             discount: 5,
             price: 150.00,
             inStock: true,
             category: "Premium Nuts",
         },
         {
-            id: 2,
+            id: 3,
+            name: "Tong Garden Salted Pistachios Can,",
+            size: "150g",
+            category: "Snacks",
+            rating: 4.5,
+            brand: "Amore",
+            discount: 45,
+            image: pistachios,
+            price: 800.00,
+            inStock: true,
+        },
+        {
+            id: 4,
             name: "Tong Garden Oven Roasted Salted Almonds, ",
             size: "145g",
             rating: 4.5,
@@ -64,10 +88,22 @@ const ProductPage = () => {
             discount: 10,
             price: 200.00,
             inStock: false,
-            category: "Premium Nuts",
+            category: "Snacks",
         },
         {
-            id: 3,
+            id: 5,
+            name: "Tong Garden Salted Pistachios Can,",
+            size: "150g",
+            category: "Snacks",
+            brand: "Noi",
+            discount: 25,
+            rating: 4.5,
+            image: pistachios,
+            price: 450.00,
+            inStock: true,
+        },
+        {
+            id: 6,
             name: "Tong Garden Black pepper Cashew Nuts, ",
             size: "32g",
             category: "Snacks",
@@ -79,46 +115,10 @@ const ProductPage = () => {
             inStock: true,
         },
         {
-            id: 4,
-            category: "Chips",
-            name: "Tong Garden Black pepper Cashew Nuts, ",
-            size: "32g",
-            rating: 4.5,
-            brand: "Amore",
-            discount: 20,
-            image: saltedcocktailnuts,
-            price: 400.00,
-            inStock: true,
-        },
-        {
-            id: 5,
-            name: "Tong Garden Salted Pistachios Can,",
-            size: "150g",
-            category: "Seeds",
-            brand: "Noi",
-            discount: 25,
-            rating: 4.5,
-            image: pistachios,
-            price: 450.00,
-            inStock: true,
-        },
-        {
-            id: 6,
-            name: "Tong Garden Oven Roasted Salted Almonds, ",
-            size: "145g",
-            category: "Fruits & Nuts",
-            brand: "Sun Gift",
-            discount: 30,
-            rating: 4.5,
-            image: almonds,
-            price: 350.00,
-            inStock: true,
-        },
-        {
             id: 7,
             name: "Tong Garden Black pepper Cashew Nuts, ",
             size: "32g",
-            category: "Dried Fruits",
+            category: "Snacks",
             rating: 4.5,
             brand: "Nutri One",
             discount: 40,
@@ -140,14 +140,14 @@ const ProductPage = () => {
         },
         {
             id: 9,
-            name: "Tong Garden Salted Pistachios Can,",
-            size: "150g",
-            category: "Confectionery",
+            name: "Tong Garden Oven Roasted Salted Almonds, ",
+            size: "145g",
+            category: "Snacks",
+            brand: "Sun Gift",
+            discount: 30,
             rating: 4.5,
-            brand: "Amore",
-            discount: 45,
-            image: pistachios,
-            price: 800.00,
+            image: almonds,
+            price: 350.00,
             inStock: true,
         },
         {
@@ -168,7 +168,7 @@ const ProductPage = () => {
             size: "32g",
             brand: "Amore",
             discount: 55,
-            category: "Fruits & Nuts",
+            category: "Snacks",
             rating: 4.5,
             image: blackpeppercashewnuts,
             price: 1000.00,
@@ -231,7 +231,7 @@ const ProductPage = () => {
         }
     };
 
-    let filteredList = productlist.filter((item) => {
+    let filteredList = snackslist.filter((item) => {
         const matchesCategory = activeCategory === "All" || item.category === activeCategory;
         const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(item.brand);
         const matchesPrice = item.price <= maxPrice;
@@ -254,7 +254,7 @@ const ProductPage = () => {
         filteredList.sort((a, b) => b.name.localeCompare(a.name));
     }
 
-    const prodlist = [
+    const snacklist = [
         {
             id: 1,
             name: "Tong Garden Salted Pistachios Can,",
@@ -336,15 +336,15 @@ const ProductPage = () => {
 
     return (
         <>
-            <div className="prod-container">
-                <h1 className="prod-heading">All Products</h1>
+            <div className="snacks-container">
+                <h1 className="snacks-heading">Snacks</h1>
             </div>
 
-            <div className="prod-content-area">
-                <div className="nav-prod">
-                    <aside className="prod-sidebar">
-                        <div className="prod-group">
-                            <h3 className="prod-title">Sort By</h3>
+            <div className="snacks-content-area">
+                <div className="nav-snacks">
+                    <aside className="snacks-sidebar">
+                        <div className="snacks-group">
+                            <h3 className="snacks-title">Sort By</h3>
                             {["lowToHigh", "highToLow", "bestSellers", "aToZ", "zToA"].map((sortKey) => (
                                 <label key={sortKey} className="checkbox-label">
                                     <input
@@ -363,15 +363,15 @@ const ProductPage = () => {
 
                         <div className="filter-divider"></div>
 
-                        <h2 className="prod-heading">Filters</h2>
+                        <h2 className="snacks-heading">Filters</h2>
 
-                        <div className="prod-group">
-                            <div className="prod-header" onClick={() => setIsBrandOpen(!isBrandOpen)}>
+                        <div className="snacks-group">
+                            <div className="snacks-header" onClick={() => setIsBrandOpen(!isBrandOpen)}>
                                 <span>Brands</span>
                                 {isBrandOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                             </div>
                             {isBrandOpen && (
-                                <div className="prod-content">
+                                <div className="snacks-content">
                                     {["Amore", "Noi", "Nutri One", "Sun Gift", "Yogi"].map((brand) => (
                                         <label key={brand} className="checkbox-label">
                                             <input
@@ -386,29 +386,29 @@ const ProductPage = () => {
                             )}
                         </div>
 
-                        <div className="prod-group">
-                            <h3 className="prod-title">Price Range</h3>
+                        <div className="snacks-group">
+                            <h3 className="snacks-title">Price Range</h3>
                             <input
                                 type="range"
                                 min="1"
                                 max="1500"
                                 value={maxPrice}
                                 onChange={(e) => setMaxPrice(Number(e.target.value))}
-                                className="prod-slider"
+                                className="snacks-slider"
                             />
-                            <div className="prod-range-values">
+                            <div className="snacks-range-values">
                                 <span>01</span>
                                 <span>{maxPrice}</span>
                             </div>
                         </div>
 
-                        <div className="prod-group">
-                            <div className="prod-header" onClick={() => setIsOfferOpen(!isOfferOpen)}>
+                        <div className="snacks-group">
+                            <div className="snacks-header" onClick={() => setIsOfferOpen(!isOfferOpen)}>
                                 <span>Offers</span>
                                 {isOfferOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                             </div>
                             {isOfferOpen && (
-                                <div className="prod-content">
+                                <div className="snacks-content">
                                     {[
                                         { label: "00% - 20%", value: "0-20" },
                                         { label: "20% - 40%", value: "20-40" },
@@ -428,8 +428,8 @@ const ProductPage = () => {
                         </div>
                     </aside>
 
-                    <div className="prod-main">
-                        <div className="prod-category-row">
+                    <div className="snacks-main">
+                        <div className="snacks-category-row">
                             {/* {categories.map((product, index) => (
                                 <button
                                     type="button"
@@ -443,7 +443,7 @@ const ProductPage = () => {
                             {categorielist.map((cat, index) => (
                                 <button
                                     type="button"
-                                    className={`btn-prod ${activeCategory === cat.label ? 'active' : ''}`}
+                                    className={`btn-snacks ${activeCategory === cat.label ? 'active' : ''}`}
                                     key={index}
                                     onClick={() => navigate(cat.link)}
                                 >
@@ -452,29 +452,29 @@ const ProductPage = () => {
                             ))}
                         </div>
 
-                        <div className="prod-grid prod-grid-bordered">
+                        <div className="snacks-grid prod-grid-bordered">
                             {filteredList.length > 0 ? (
                                 filteredList.map((product) => (
-                                    <div className="prod-card" key={product.id}>
-                                        <div className="prod-rating">
+                                    <div className="snacks-card" key={product.id}>
+                                        <div className="snacks-rating">
                                             <Star size={14} fill="#FFC107" stroke="#FFC107" />
                                             <span>{product.rating}</span>
                                         </div>
 
-                                        <h3 className="prod-name">{product.name}</h3>
+                                        <h3 className="snacks-name">{product.name}</h3>
 
-                                        <div className="prod-image-wrap">
+                                        <div className="snacks-image-wrap">
                                             <img src={product.image} alt={product.name} />
                                         </div>
 
-                                        <p className="prod-price">
+                                        <p className="snacks-price">
                                             Rs. {product.price ? product.price.toFixed(2) : "0.00"}
                                         </p>
 
-                                        <div className="prod-btn-row">
+                                        <div className="snacks-btn-row">
                                             <button
                                                 type="button"
-                                                className={`prod-btnall ${!product.inStock ? 'out-of-stock' : ''}`}
+                                                className={`snacks-btnall ${!product.inStock ? 'out-of-stock' : ''}`}
                                                 disabled={!product.inStock}
                                                 onClick={() => handleAddToCart(product)}
                                             >
@@ -483,7 +483,7 @@ const ProductPage = () => {
                                             {!product.inStock && (
                                                 <button
                                                     type="button"
-                                                    className="prod-notify-icon"
+                                                    className="snacks-notify-icon"
                                                     onClick={() => handleNotifyMe(product)}
                                                     aria-label="Notify me when back in stock"
                                                 >
@@ -494,38 +494,38 @@ const ProductPage = () => {
                                     </div>
                                 ))
                             ) : (
-                                <p className="prod-empty">No products found for selected filters.</p>
+                                <p className="snacks-empty">No products found for selected filters.</p>
                             )}
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className='prod-text'>
-                <h2 className='prod-h2'>Recommendation For You</h2>
-                <div className='prod-grid'>
-                    {prodlist.map((product) => (
-                        <div className="prod-card" key={product.id}>
-                            <div className="prod-rating">
+            <div className='snacks-text'>
+                <h2 className='snacks-h2'>Recommendation For You</h2>
+                <div className='snacks-grid'>
+                    {snacklist.map((product) => (
+                        <div className="snacks-card" key={product.id}>
+                            <div className="snacks-rating">
                                 <Star size={14} fill="#FFC107" stroke="#FFC107" />
                                 <span>{product.rating}</span>
                             </div>
 
-                            <h3 className="prod-name">{product.name}</h3>
+                            <h3 className="snacks-name">{product.name}</h3>
 
-                            <div className="prod-image-wrap">
+                            <div className="snacks-image-wrap">
                                 <img src={product.image} alt={product.name} />
                             </div>
 
-                            <p className="prod-price">
+                            <p className="snacks-price">
                                 Rs. {product.price ? product.price.toFixed(2) : "0.00"}
                             </p>
 
-                            <div className="prod-btn-row">
+                            <div className="snacks-btn-row">
                                 {product.inStock ? (
                                     <button
                                         type="button"
-                                        className="prod-btnall"
+                                        className="snacks-btnall"
                                         onClick={() => handleAddToCart(product)}
                                     >
                                         Add to Cart
@@ -534,14 +534,14 @@ const ProductPage = () => {
                                     <>
                                         <button
                                             type="button"
-                                            className="prod-btnall notify-me"
+                                            className="snacks-btnall notify-me"
                                             onClick={() => handleNotifyMe(product)}
                                         >
                                             Notify Me
                                         </button>
                                         <button
                                             type="button"
-                                            className="prod-notify-icon"
+                                            className="snacks-notify-icon"
                                             onClick={() => handleNotifyMe(product)}
                                             aria-label="Notify me when back in stock"
                                         >
@@ -555,29 +555,29 @@ const ProductPage = () => {
                 </div>
             </div>
 
-            <div className='prod-got'>
-                <h2 className='prod-h2'>Got Any Questions?</h2>
-                <div className='prod-faq-list'>
+            <div className='snacks-got'>
+                <h2 className='snacks-h2'>Got Any Questions?</h2>
+                <div className='snacks-faq-list'>
                     {faqs.map((faq, index) => (
-                        <div className='prod-faq-item' key={index}>
-                            <button type='button' className='prod-faq-question' onClick={() => toggleFaq(index)}>
+                        <div className='snacks-faq-item' key={index}>
+                            <button type='button' className='snacks-faq-question' onClick={() => toggleFaq(index)}>
                                 <span>{faq.question}</span>
                                 {openFaq === index ? <ChevronUp size={22} /> : <ChevronDown size={22} />}
                             </button>
                             {openFaq === index && (
-                                <p className="prod-faq-answer">{faq.answer}</p>
+                                <p className="snacks-faq-answer">{faq.answer}</p>
                             )}
-                            <div className="prod-faq-divider"></div>
+                            <div className="snacks-faq-divider"></div>
                         </div>
                     ))}
                 </div>
             </div>
 
-            <div className="prod-head">
+            <div className="snacks-head">
                 {features.map((item) => (
-                    <div className="prod-item" key={item.id}>
-                        <span className="prod-icon">{item.icon}</span>
-                        <span className="prod-label">{item.label}</span>
+                    <div className="snacks-item" key={item.id}>
+                        <span className="snacks-icon">{item.icon}</span>
+                        <span className="snacks-label">{item.label}</span>
                     </div>
                 ))}
             </div>
@@ -585,4 +585,4 @@ const ProductPage = () => {
     );
 };
 
-export default ProductPage;
+export default Snacks;

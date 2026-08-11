@@ -111,7 +111,7 @@
   color: yellow;
   padding: 10px 0px 20px;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: start;
   gap: 10px;
   display: flex;
   margin-bottom: 25px;
