@@ -26,6 +26,8 @@ import Snacks from './pages/Snacks';
 import Chips from './pages/Chips';
 import PremiumNuts from './pages/PremiumNuts';
 import FruitsNuts from './pages/FruitsNuts';
+import DriedFruits from './pages/DriedFruits';
+import Confectionery from './pages/Confectionery';
 
 
 function App() {
@@ -48,6 +50,8 @@ function App() {
             <Route path='/arrivals' element={<Arrivals />} />
             <Route path='fruit' element={<FruitsNuts />} />
             <Route path='/seeds' element={<Seeds />} />
+            <Route path='/driedfruit' element={<DriedFruits />} />
+            <Route path='/confectionery' element={<Confectionery />} />
             <Route path='/nuts' element={<PremiumNuts />} />
             <Route path='/snacks' element={<Snacks />} />
             <Route path='/checkout' element={<CheckoutPage />} />
