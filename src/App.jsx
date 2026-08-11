@@ -6,6 +6,7 @@ import './pages/css/snack.css';
 import './pages/css/chip.css'; 
 import './pages/css/premiumnuts.css'; 
 import './pages/css/seed.css'; 
+import './pages/css/fruit.css'; 
 import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/Homepage';
 import CartPage from './pages/CartPage';
@@ -24,6 +25,7 @@ import Seeds from './pages/Seeds';
 import Snacks from './pages/Snacks';
 import Chips from './pages/Chips';
 import PremiumNuts from './pages/PremiumNuts';
+import FruitsNuts from './pages/FruitsNuts';
 
 
 function App() {
@@ -44,6 +46,7 @@ function App() {
             <Route path='/promotions' element={<Promotional />} />
             <Route path='/about' element={<AboutPage />} />
             <Route path='/arrivals' element={<Arrivals />} />
+            <Route path='fruit' element={<FruitsNuts />} />
             <Route path='/seeds' element={<Seeds />} />
             <Route path='/nuts' element={<PremiumNuts />} />
             <Route path='/snacks' element={<Snacks />} />
