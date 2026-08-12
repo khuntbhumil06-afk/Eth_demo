@@ -14,7 +14,7 @@ const AboutPage = () => {
     };
 
     const handleExploreRange = (product) => {
-        navigate("/productpage");
+        navigate("/product");
     };
     const items = [
         {
