@@ -168,6 +168,11 @@
     border-color: #d32f2f;
 }
 
+textarea.form-input{
+    resize: vertical;
+    min-height: 100px;
+}
+
 .error-text {
     color: #ff4d4f;
     font-size: 13px;

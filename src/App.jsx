@@ -32,6 +32,7 @@ import DriedFruits from './pages/DriedFruits';
 import Confectionery from './pages/Confectionery';
 import Membership from './pages/Membership.jsx';
 import ContactPage from './pages/ContactPage.jsx';
+import Blogs from './pages/Blogs.jsx';
 
 
 function App() {
@@ -52,7 +53,8 @@ function App() {
             <Route path='/promotions' element={<Promotional />} />
             <Route path='/about' element={<AboutPage />} />
             <Route path='/arrivals' element={<Arrivals />} />
-            <Route path='fruit' element={<FruitsNuts />} />
+            <Route path='/fruit' element={<FruitsNuts />} />
+            <Route path='/blog' element={<Blogs />} />
             <Route path='/seeds' element={<Seeds />} />
             <Route path='/contact' element={<ContactPage />} />
             <Route path='/membership' element={<Membership />} />

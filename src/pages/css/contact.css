@@ -81,9 +81,20 @@
     border-color: #2A2E68;
 }
 
+.form-input.form-error {
+    border-color: #d32f2f;
+}
+
 textarea.form-input{
     resize: vertical;
     min-height: 100px;
+}
+
+.error-text {
+    color: #ff4d4f;
+    font-size: 13px;
+    text-align: start;
+    margin-bottom: 16px;
 }
 
 .btn-form {
