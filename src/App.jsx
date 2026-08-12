@@ -7,6 +7,7 @@ import './pages/css/chip.css';
 import './pages/css/premiumnuts.css'; 
 import './pages/css/seed.css'; 
 import './pages/css/fruit.css'; 
+import './pages/css/contact.css'; 
 import './pages/css/membership.css'; 
 import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/Homepage';
@@ -30,6 +31,7 @@ import FruitsNuts from './pages/FruitsNuts';
 import DriedFruits from './pages/DriedFruits';
 import Confectionery from './pages/Confectionery';
 import Membership from './pages/Membership.jsx';
+import ContactPage from './pages/ContactPage.jsx';
 
 
 function App() {
@@ -52,6 +54,7 @@ function App() {
             <Route path='/arrivals' element={<Arrivals />} />
             <Route path='fruit' element={<FruitsNuts />} />
             <Route path='/seeds' element={<Seeds />} />
+            <Route path='/contact' element={<ContactPage />} />
             <Route path='/membership' element={<Membership />} />
             <Route path='/driedfruit' element={<DriedFruits />} />
             <Route path='/confectionery' element={<Confectionery />} />
