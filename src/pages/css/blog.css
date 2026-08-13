@@ -1,0 +1,201 @@
+/* ==== Blogs Page ==== */
+.blogs-container{
+    background-color: #F0F0F0;
+    color: #2A2E68;
+    width: 100%;
+    padding: 60px 40px;
+    margin-top: 10px;
+}
+
+.blogs-heading{
+    font-size: 32px;
+    font-weight: 800;
+    font-style: italic;
+    color: #2A2E68;
+    text-align: center;
+}
+
+.blogs-content-area{
+    padding: 50px 40px 30px;
+    background-color: #FFFFFF;
+}
+
+.nav-blogs{
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.blogs-sidebar{
+    width: 240px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #FFFFFF;
+}
+
+.blogs-header{
+    font-size: 20px;
+    font-weight: 800;
+    font-style: italic;
+    color: #2A2E68;
+    text-align: start;
+}
+
+.blogs-group{
+    margin-bottom: 16px;
+}
+
+.blogs-content{
+    display: flex;
+    flex-direction: column;
+    padding-top: 4px;
+    font-weight: bold;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.checkbox-label input {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+.blogs-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.blogs-grid::-webkit-scrollbar,
+.nav-blogs::-webkit-scrollbar {
+    display: none;
+}
+
+.blogs-card{
+    flex: 0 0 auto;
+    width: 330px;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    height: 500px;
+    padding: 15px;
+    background-color: #FFF2C7;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.blogs-image-wrap{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.blogs-image-wrap img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.blogs-name{
+    font-size: 15px;
+    font-weight: 800;
+    font-style: italic;
+    color: #2A2E68;
+}
+
+.blogs-description{
+    font-size: 13px;
+    font-weight: 800;
+    font-style: italic;
+    color: #2A2E68;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.btn-blogs{
+    background-color: transparent;
+    color: #2A2E68;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    width: 30%;
+}
+
+.blogs-date{
+    font-size: 16px;
+    font-weight: 600;
+    margin: 10px 0 5px;
+    color: #222;
+    height: 40px;
+    overflow: hidden;
+}
+
+.blogs-empty{
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
+    color: #2A2E68;
+    align-items: center;
+    text-align: center;
+    grid-column: 1 / -1;
+    padding: 60px 20px;
+}
+
+.blogs-head{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FEFBED;
+    padding: 40px 20px;
+    flex-wrap: wrap;
+}
+
+.blogs-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0 50px;
+    position: relative;
+}
+
+.blogs-item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 60px;
+    width: 1.5px;
+    background: #1a1a6d;
+}
+
+.blogs-icon {
+    color: #f5850f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blogs-label {
+    font-size: 24px;
+    font-weight: 800;
+    color: #111;
+}

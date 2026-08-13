@@ -9,6 +9,8 @@ import './pages/css/seed.css';
 import './pages/css/fruit.css'; 
 import './pages/css/contact.css'; 
 import './pages/css/membership.css'; 
+import './pages/css/blog.css'; 
+import './pages/css/blogdetails.css'; 
 import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/Homepage';
 import CartPage from './pages/CartPage';
@@ -33,6 +35,7 @@ import Confectionery from './pages/Confectionery';
 import Membership from './pages/Membership.jsx';
 import ContactPage from './pages/ContactPage.jsx';
 import Blogs from './pages/Blogs.jsx';
+import BlogDetails from './pages/BlogDetails.jsx';
 
 
 function App() {
@@ -56,6 +59,7 @@ function App() {
             <Route path='/fruit' element={<FruitsNuts />} />
             <Route path='/blog' element={<Blogs />} />
             <Route path='/seeds' element={<Seeds />} />
+            <Route path='/blogs/:id' element={<BlogDetails />} />
             <Route path='/contact' element={<ContactPage />} />
             <Route path='/membership' element={<Membership />} />
             <Route path='/driedfruit' element={<DriedFruits />} />
