@@ -9,6 +9,47 @@ const BlogDetails = () => {
     const navigate = useNavigate();
     const { id } = useParams();
 
+    const [formText, setFormText] = useState({
+        comment: '',
+        name: '',
+        email: ''
+    });
+    const [errors, setErrors] = useState({});
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormText((prev) => ({ ...prev, [name]: value }));
+        if (errors[name]) {
+            setErrors((prev) => ({ ...prev, [name]: '' }));
+        }
+    };
+
+    const validateForm = () => {
+        const newErrors = {};
+        if (!formText.name.trim())
+            newErrors.name = "Name is required";
+
+        if (!formText.email.trim())
+            newErrors.email = "Email is required";
+        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formText.email.trim()))
+            newErrors.email = "Enter a valid email";
+
+        if (!formText.comment.trim())
+            newErrors.comment = "required";
+        return newErrors;
+    };
+
+    const handleBlogDetails = (e) => {
+        e.preventDefault();
+        const newErrors = validateForm();
+        if (Object.keys(newErrors).length > 0) {
+            setErrors(newErrors);
+            return;
+        }
+        console.log(formText);
+        navigate('/');
+    };
+
     const blogdetails = [
         {
             id: 1,
@@ -38,28 +79,28 @@ const BlogDetails = () => {
                     text: <>
                         Incorporating dry fruits into your diet is simple and can be done in various ways:
 
-                        Snacking:
-                        It is also advisable to carry a small packet of mixed dry fruits such as almonds, Cashews, salted<br />
-                        peanuts, etc. It can be taken as a mid-morning or mid-afternoon snack at work or anywhere you<br />
-                        find yourself when you’re not in the kitchen. Looking for a spicy, crunchy snack and Nuts? Try Tong<br />
-                        Garden Salted Cocktail Nuts and Salted Pistachios Can! Perfect for any occasion, they’re sure to<br />
-                        add a kick to your day. Grab yours now and enjoy the flavor!<br />
+                        Snacking:<br />
+                        It is also advisable to carry a small packet of mixed dry fruits such as almonds, Cashews, salted
+                        peanuts, etc. It can be taken as a mid-morning or mid-afternoon snack at work or anywhere you
+                        find yourself when you’re not in the kitchen. Looking for a spicy, crunchy snack and Nuts? Try Tong
+                        Garden Salted Cocktail Nuts and Salted Pistachios Can! Perfect for any occasion, they’re sure to
+                        add a kick to your day. Grab yours now and enjoy the flavor!<br /><br/>
 
-                        Meal Enhancements:
-                        The chopped dry fruits can be eaten with breakfast cereals, yogurt, or salads. It also increases the<br />
-                        taste of the meals and the nutritional value of the foods in an amazing way.<br />
+                        Meal Enhancements:<br/>
+                        The chopped dry fruits can be eaten with breakfast cereals, yogurt, or salads. It also increases the
+                        taste of the meals and the nutritional value of the foods in an amazing way.<br /><br/>
 
-                        Portion Control:
-                        In spite of the fact that they are a bit fructose, dry fruits are packed with calories. Several meals <br />
-                        taken in moderate proportions to prevent overwhelming the organs of digestion. Well, a <br />
-                        serving of nuts, or a serving size, can be estimated to be about an ounce or a small handful of <br />
-                        nuts.<br />
+                        Portion Control:<br/>
+                        In spite of the fact that they are a bit fructose, dry fruits are packed with calories. Several meals 
+                        taken in moderate proportions to prevent overwhelming the organs of digestion. Well, a 
+                        serving of nuts, or a serving size, can be estimated to be about an ounce or a small handful of 
+                        nuts.<br /><br/>
 
-                        Combination with Other Foods:
-                        It is advisable to combine dry fruits with fresh fruits, vegetables, or whole grains in order to come <br />
-                        up with healthy meals or snacks.<br />
+                        Combination with Other Foods:<br/>
+                        It is advisable to combine dry fruits with fresh fruits, vegetables, or whole grains in order to come
+                        up with healthy meals or snacks.<br /><br/>
 
-                        Being overweight or obese is not a simple event in life and is not a one-time process of losing weight and then keeping it off. It is all about the choices that you make with your food. Thus, it can be stated that dry fruits are calorie-controlling, nutrient-packed, and tasty for weight loss. These foods aid in controlling hunger, metabolism and also help in eradicating cravings hence adding them to the diet is advisable. By making a spot of these dry fruits in your ever-busy schedule of managing your weight, you will be in a position to enjoy the following health benefits. That is why, concerned weight loss is not only about cutting down the portion size but also choosing the foods that are actually good for your body. Thus, if you incorporate dry fruits into your diet, you are set for a healthy and tasty trip to a new slimmer you.
+                        Being overweight or obese is not a simple event in life and is not a one-time process of losing weight and then keeping it off. It is all about the choices that you make with your food. Thus, it can be stated that dry fruits are calorie-controlling, nutrient-packed, and tasty for weight loss. These foods aid in controlling hunger, metabolism and also help in eradicating cravings hence adding them to the diet is advisable. By making a spot of these dry fruits in your ever-busy schedule of managing your weight, you will be in a position to enjoy the following health benefits. That is why, concerned weight loss is not only about cutting down the portion size but also choosing the foods that are actually good for your body. Thus, if you incorporate dry fruits into your diet, you are set for a healthy and tasty trip to a new slimmer you.<br/><br/>
 
                         Elevate your snacking with Tong Garden's Premium Nuts. From almonds and cashews to pistachios and beyond, our selection offers unparalleled taste and nutrition. Try them today and indulge in the finest quality for a healthier lifestyle.
                     </>
@@ -213,6 +254,67 @@ const BlogDetails = () => {
                                 </p>
                             </div>
                         ))}
+                        <div className='form-details'>
+                            <h2 className='form-heading'>
+                                Leave A Comment
+                            </h2>
+                            <p className='p-heading'>
+                                Your email address will not be published.
+                            </p>
+                            <form className='blogdetails-form' onSubmit={handleBlogDetails}>
+                                <label className="form-label" htmlFor="comment">
+                                    Comment
+                                </label>
+                                <textarea
+                                    type="text"
+                                    id="comment"
+                                    name="comment"
+                                    className={`form-input ${errors.comment ? 'input-error' : ''}`}
+                                    value={formText.comment}
+                                    onChange={handleChange}
+                                    autoComplete="off"
+                                />
+                                {errors.comment && (
+                                    <span className="error-text">{errors.comment}</span>
+                                )}<br />
+
+                                <label className="form-label" htmlFor="name">
+                                    Name
+                                </label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    className={`form-input ${errors.name ? 'input-error' : ''}`}
+                                    value={formText.name}
+                                    onChange={handleChange}
+                                    autoComplete="off"
+                                />
+                                {errors.name && (
+                                    <span className="error-text">{errors.name}</span>
+                                )}<br />
+
+                                <label className="form-label" htmlFor="email">
+                                    Email
+                                </label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    className={`form-input ${errors.email ? 'input-error' : ''}`}
+                                    value={formText.email}
+                                    onChange={handleChange}
+                                    autoComplete="off"
+                                />
+                                {errors.email && (
+                                    <span className="error-text">{errors.email}</span>
+                                )}<br />
+
+                                <button type="submit" className="btn-blogdetails">
+                                    Submit
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
