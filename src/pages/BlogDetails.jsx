@@ -172,6 +172,10 @@ const BlogDetails = () => {
         },
     ];
 
+    const blog = blogdetails.find((item) => item.id === Number(id)) || blogdetails[0];
+
+    const relatedBlogs = blogdetails.filter((item) => item.id !== blog.id);
+
     const features = [
         {
             id: 1,
@@ -189,10 +193,6 @@ const BlogDetails = () => {
             label: "Global Reach"
         },
     ];
-
-    const blog = blogdetails.find((item) => item.id === Number(id)) || blogdetails[0];
-
-    const relatedBlogs = blogdetails.filter((item) => item.id !== blog.id);
 
     return (
         <>
@@ -319,11 +319,11 @@ const BlogDetails = () => {
                 </div>
             </div>
 
-            <div className="blogdetails-head">
+            <div className="blogs-head">
                 {features.map((item) => (
-                    <div className="blogdetails-item" key={item.id}>
-                        <span className="blogdetails-icon">{item.icon}</span>
-                        <span className="blogdetails-label">{item.label}</span>
+                    <div className="blogs-item" key={item.id}>
+                        <span className="blogs-icon">{item.icon}</span>
+                        <span className="blogs-label">{item.label}</span>
                     </div>
                 ))}
             </div>
