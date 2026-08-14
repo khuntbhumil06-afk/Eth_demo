@@ -11,7 +11,8 @@ import './pages/css/contact.css';
 import './pages/css/membership.css'; 
 import './pages/css/blog.css'; 
 import './pages/css/blogdetails.css'; 
-import './pages/css/productdetails.css'; 
+import './pages/css/productdetails.css';
+import './pages/css/festival.css';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/Homepage';
 import CartPage from './pages/CartPage';
@@ -38,6 +39,7 @@ import ContactPage from './pages/ContactPage.jsx';
 import Blogs from './pages/Blogs.jsx';
 import BlogDetails from './pages/BlogDetails.jsx';
 import ProductDetails from './pages/ProductDetails.jsx';
+import Festival from './pages/Festival.jsx';
 
 
 function App() {
@@ -63,6 +65,7 @@ function App() {
             <Route path='/seeds' element={<Seeds />} />
             <Route path='/product/:id' element={<ProductDetails />} />
             <Route path='/blogs/:id' element={<BlogDetails />} />
+            <Route path='/festival' element={<Festival />} />
             <Route path='/contact' element={<ContactPage />} />
             <Route path='/membership' element={<Membership />} />
             <Route path='/driedfruit' element={<DriedFruits />} />
