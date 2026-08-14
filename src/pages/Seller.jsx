@@ -381,7 +381,10 @@ const Seller = () => {
 
                                         <h3 className="seller-name">{product.name}</h3>
 
-                                        <div className="seller-image-wrap">
+                                        <div className="seller-image-wrap"
+                                            onClick={() => navigate(`/product/${product.id}`, { state: { product } })}
+                                            style={{ cursor: 'pointer' }}
+                                        >
                                             <img src={product.image} alt={product.name} />
                                         </div>
 
