@@ -38,33 +38,39 @@ function Club() {
             </div>
 
             <div className="club-wrapper">
-                <div className="club-bar">
-                    <h1 className="club-heading">
-                        Join Our <br />
-                        Snack Club!
-                    </h1>
-                    <p className="club-subheading">
-                        Be the first one to hear about our newest flavours,<br />
-                        exclusive offers and more.
-                    </p>
-                    <button type="button" className="btn-club">
-                        Sign Up
-                    </button>
-                    <div className="club-image">
-                        <img src={club.image} alt="SingUp" />
+                <div className="club-left">
+                    <div className="club-bar">
+                        <h1 className="club-heading">
+                            Join Our <br />
+                            Snack Club!
+                        </h1>
+                        <p className="club-subheading">
+                            Be the first one to hear about our newest flavours,<br />
+                            exclusive offers and more.
+                        </p>
+                        <button type="button" className="btn-club">
+                            Sign Up
+                        </button>
+                    </div>
+                    <div className="club-grid">
+                        <div className="club-image">
+                            <img src={club.image} alt="SingUp" />
+                        </div>
                     </div>
                 </div>
-                <div className="head-text">
-                    <h2 className="head-h2">
-                        Snack Updates,<br />
-                        Straight to<br />
-                        Your Inbox!
-                    </h2>
-                    <div className="club-input">
-                        <input type="email" placeholder="Email" />
-                        <button type="button" className="btn-input">
-                            Join
-                        </button>
+                <div className="club-right">
+                    <div className="head-text">
+                        <h2 className="head-h2">
+                            Snack Updates,<br />
+                            Straight to<br />
+                            Your Inbox!
+                        </h2>
+                        <div className="club-input">
+                            <input type="email" placeholder="Email" />
+                            <button type="button" className="btn-input">
+                                Join
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
