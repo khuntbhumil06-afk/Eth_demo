@@ -2,17 +2,14 @@
     width: 100%;
     background-color: #F0F0F0;
     text-align: center;
-    padding: 50px 40px 30px;
+    padding: 60px 40px;
 }
 
 .festival-heading {
     font-size: 32px;
-    font-weight: 800;
+    font-weight: bold;
     font-style: italic;
-    color: #2A2E68;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
+    color: #1a237e;
     margin-bottom: 30px;
 }
 

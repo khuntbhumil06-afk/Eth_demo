@@ -285,7 +285,7 @@ const Festival = () => {
 
     return (
         <>
-            <div className="festival-contaianer">
+            <div className="festival-container">
                 <h1 className="festival-heading">
                     Festival Gifting
                 </h1>
