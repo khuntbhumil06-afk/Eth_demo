@@ -1,0 +1,58 @@
+/* ==== Addresses Pages ==== */
+.profile-card{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.address-card{
+    border: 1px solid #E5E1D8;
+    border-radius: 10px;
+    padding: 14px 16px;
+    min-width: 260px;
+    max-width: 320px;
+    flex: 1 1 260px;
+    background: #fff;
+}
+
+.address-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.address-section{
+    display: flex;
+    gap: 8px;
+}
+
+.address-icon{
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #6B6B6B;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.address-icon:hover{
+    color: #1E2A5E;
+}
+
+.address-span{
+    font-weight: 700;
+    font-size: 13px;
+    color: #1E2A5E;
+    letter-spacing: 0.5px;
+}
+
+.address-line{
+    font-size: 13px;
+    color: #4A4A4A;
+    margin: 2px 0;
+    line-height: 1.4;
+}
