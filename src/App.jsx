@@ -13,6 +13,7 @@ import './pages/css/blog.css';
 import './pages/css/blogdetails.css'; 
 import './pages/css/productdetails.css';
 import './pages/css/festival.css';
+import './pages/css/checkout.css';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/Homepage';
 import CartPage from './pages/CartPage';
