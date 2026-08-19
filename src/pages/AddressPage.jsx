@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { Pencil, Trash2 } from "lucide-react";
+import { Pencil, Trash2, X } from "lucide-react";
 
 const AddressPage = () => {
     const navigate = useNavigate();
@@ -96,8 +96,7 @@ const AddressPage = () => {
             city: "",
             state: "",
             pin: "",
-            phone: "",
-            agreeToTerms: false
+            phone: ""
         });
         setErrors({});
     };
@@ -115,8 +114,7 @@ const AddressPage = () => {
             city: "",
             state: "",
             pin: "",
-            phone: "",
-            agreeToTerms: false
+            phone: ""
         });
         setErrors({});
     };
@@ -130,6 +128,12 @@ const AddressPage = () => {
         setAddressType("HOME");
         resetForm();
     };
+
+    const closeModal = () => {
+        setEditingAddress(null);
+        resetForm();
+        setAddressType("HOME");
+    }
 
     const validate = () => {
         let newErrors = {};
@@ -180,19 +184,36 @@ const AddressPage = () => {
             isValid = false;
         }
 
-        if (!formData.agreeToTerms) {
-            newErrors.agreeToTerms = 'You must agree before creating an account';
-            isValid = false;
-        }
-
         setErrors(newErrors);
         return isValid;
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Form Submitted:", formData);
-        setEditingAddress(null);
+
+        if (!validate()) {
+            return;
+        }
+
+        const formattedAddress = {
+            id: editingAddress?.id || Date.now(),
+            type: addressType,
+            name: `${formData.firstName} ${formData.lastName}`,
+            line1: `${formData.addressLine1} ${formData.addressLine2}`,
+            line2: `${formData.city} ${formData.state} ${formData.pin} ${formData.country}`
+        }
+
+        if (editingAddress?.id) {
+            setAddressList((prev) =>
+                prev.map((item) => (
+                    item.id === editingAddress.id ? formattedAddress : item
+                ))
+            );
+        }else {
+            setAddressList((prev) => [...prev, formattedAddress]);
+        }
+
+        closeModal();
     };
 
     return (
@@ -264,167 +285,173 @@ const AddressPage = () => {
                     </div>
                 </div>
                 {editingAddress && (
-                    <div className="edit-address-wrapper">
-                        <div className="address-type">
-                            {["HOME", "OFFICE", "OTHER"].map((type) => (
-                                <button
-                                    key={type}
-                                    type="button"
-                                    className={`address-tab ${addressType === type ? "active" : ""}`}
-                                    onClick={() => setAddressType(type)}
-                                >
-                                    {type}
-                                </button>
-                            ))}
-                        </div>
-
-                        <h3 className="address-h3">Shipping Address</h3>
-
-                        <form className="shipping-form" onSubmit={handleSubmit}>
-                            <div className="checkout-group full">
-                                <label htmlFor="country">Country</label>
-                                <select
-                                    name="country"
-                                    value={formData.country}
-                                    onChange={handleChange}
-                                >
-                                    <option value="India">India</option>
-                                    <option value="uk">UK</option>
-                                    <option value="usa">USA</option>
-                                    <option value="canada">CANADA</option>
-                                </select>
-                            </div>
-
-                            <div className="checkout-row">
-                                <div className="checkout-group">
-                                    <label htmlFor="firstName">First Name</label>
-                                    <input
-                                        type="text"
-                                        name="firstName"
-                                        placeholder="Chris"
-                                        className={`checkout-input ${errors.firstName ? "input-error" : ""}`}
-                                        value={formData.firstName}
-                                        onChange={handleChange}
-                                        autoComplete="off"
-                                    />
-                                    {errors.firstName && (
-                                        <span className="error-text">{errors.firstName}</span>
-                                    )}
-                                </div>
-
-                                <div className="checkout-group">
-                                    <label htmlFor="lastName">Last Name</label>
-                                    <input
-                                        type="text"
-                                        name="lastName"
-                                        placeholder="Martin"
-                                        className={`checkout-input ${errors.lastName ? "input-error" : ""}`}
-                                        value={formData.lastName}
-                                        onChange={handleChange}
-                                        autoComplete="off"
-                                    />
-                                    {errors.lastName && (
-                                        <span className="error-text">{errors.lastName}</span>
-                                    )}
-                                </div>
-                            </div>
-
-                            <div className="checkout-group">
-                                <label htmlFor="addressLine1">Address Line 1</label>
-                                <input
-                                    type="text"
-                                    name="addressLine1"
-                                    className={`checkout-input ${errors.addressLine1 ? "input-error" : ""}`}
-                                    value={formData.addressLine1}
-                                    onChange={handleChange}
-                                    autoComplete="off"
-                                />
-                                {errors.addressLine1 && (
-                                    <span className="error-text">{errors.addressLine1}</span>
-                                )}
-                            </div>
-
-                            <div className="checkout-group">
-                                <label htmlFor="addressLine2">Address Line 2</label>
-                                <input
-                                    type="text"
-                                    name="addressLine2"
-                                    className={`checkout-input ${errors.addressLine2 ? "input-error" : ""}`}
-                                    value={formData.addressLine2}
-                                    onChange={handleChange}
-                                    autoComplete="off"
-                                />
-                                {errors.addressLine2 && (
-                                    <span className="error-text">{errors.addressLine2}</span>
-                                )}
-                            </div>
-
-                            <div className="checkout-row three">
-                                <div className="checkout-group">
-                                    <label htmlFor="city">City</label>
-                                    <input
-                                        type="text"
-                                        name="city"
-                                        className={`checkout-input ${errors.city ? "input-error" : ""}`}
-                                        value={formData.city}
-                                        onChange={handleChange}
-                                        autoComplete="off"
-                                    />
-                                    {errors.city && (
-                                        <span className="error-text">{errors.city}</span>
-                                    )}
-                                </div>
-
-                                <div className="checkout-group">
-                                    <label htmlFor="state">State</label>
-                                    <input
-                                        type="text"
-                                        name="state"
-                                        className={`checkout-input ${errors.state ? "input-error" : ""}`}
-                                        value={formData.state}
-                                        onChange={handleChange}
-                                        autoComplete="off"
-                                    />
-                                    {errors.state && (
-                                        <span className="error-text">{errors.state}</span>
-                                    )}
-                                </div>
-
-                                <div className="checkout-group">
-                                    <label htmlFor="pin">PIN</label>
-                                    <input
-                                        type="text"
-                                        name="pin"
-                                        className={`checkout-input ${errors.pin ? "input-error" : ""}`}
-                                        value={formData.pin}
-                                        onChange={handleChange}
-                                        autoComplete="off"
-                                    />
-                                    {errors.pin && (
-                                        <span className="error-text">{errors.pin}</span>
-                                    )}
-                                </div>
-                            </div>
-
-                            <div className="checkout-group">
-                                <label htmlFor="phone">Phone</label>
-                                <input
-                                    type="text"
-                                    name="phone"
-                                    className={`checkout-input ${errors.phone ? "input-error" : ""}`}
-                                    value={formData.phone}
-                                    onChange={handleChange}
-                                    autoComplete="off"
-                                />
-                                {errors.phone && (
-                                    <span className="error-text">{errors.phone}</span>
-                                )}
-                            </div>
-
-                            <button type="submit" className="btn-save">
-                                Save Address
+                    <div className="edit-address-wrapper" onClick={closeModal}>
+                        <div className="edit-address" onClick={(e) => e.stopPropagation()}>
+                            <button type="button" className="address-modal"
+                                aria-label="close"
+                                onClick={closeModal}
+                            >
+                                <X size={20} />
                             </button>
-                        </form>
+                            <div className="address-type">
+                                {["HOME", "OFFICE", "OTHER"].map((type) => (
+                                    <button
+                                        key={type}
+                                        type="button"
+                                        className={`address-tab ${addressType === type ? "active" : ""}`}
+                                        onClick={() => setAddressType(type)}
+                                    >
+                                        {type}
+                                    </button>
+                                ))}
+                            </div>
+
+                            <form className="shipping-form" onSubmit={handleSubmit}>
+                                <div className="checkout-group full">
+                                    <label htmlFor="country">Country</label>
+                                    <select
+                                        name="country"
+                                        value={formData.country}
+                                        onChange={handleChange}
+                                    >
+                                        <option value="India">India</option>
+                                        <option value="uk">UK</option>
+                                        <option value="usa">USA</option>
+                                        <option value="canada">CANADA</option>
+                                    </select>
+                                </div>
+
+                                <div className="checkout-row">
+                                    <div className="checkout-group">
+                                        <label htmlFor="firstName">First Name</label>
+                                        <input
+                                            type="text"
+                                            name="firstName"
+                                            placeholder="Chris"
+                                            className={`checkout-input ${errors.firstName ? "input-error" : ""}`}
+                                            value={formData.firstName}
+                                            onChange={handleChange}
+                                            autoComplete="off"
+                                        />
+                                        {errors.firstName && (
+                                            <span className="error-text">{errors.firstName}</span>
+                                        )}
+                                    </div>
+
+                                    <div className="checkout-group">
+                                        <label htmlFor="lastName">Last Name</label>
+                                        <input
+                                            type="text"
+                                            name="lastName"
+                                            placeholder="Martin"
+                                            className={`checkout-input ${errors.lastName ? "input-error" : ""}`}
+                                            value={formData.lastName}
+                                            onChange={handleChange}
+                                            autoComplete="off"
+                                        />
+                                        {errors.lastName && (
+                                            <span className="error-text">{errors.lastName}</span>
+                                        )}
+                                    </div>
+                                </div>
+
+                                <div className="checkout-group">
+                                    <label htmlFor="addressLine1">Address Line 1</label>
+                                    <input
+                                        type="text"
+                                        name="addressLine1"
+                                        className={`checkout-input ${errors.addressLine1 ? "input-error" : ""}`}
+                                        value={formData.addressLine1}
+                                        onChange={handleChange}
+                                        autoComplete="off"
+                                    />
+                                    {errors.addressLine1 && (
+                                        <span className="error-text">{errors.addressLine1}</span>
+                                    )}
+                                </div>
+
+                                <div className="checkout-group">
+                                    <label htmlFor="addressLine2">Address Line 2</label>
+                                    <input
+                                        type="text"
+                                        name="addressLine2"
+                                        className={`checkout-input ${errors.addressLine2 ? "input-error" : ""}`}
+                                        value={formData.addressLine2}
+                                        onChange={handleChange}
+                                        autoComplete="off"
+                                    />
+                                    {errors.addressLine2 && (
+                                        <span className="error-text">{errors.addressLine2}</span>
+                                    )}
+                                </div>
+
+                                <div className="checkout-row three">
+                                    <div className="checkout-group">
+                                        <label htmlFor="city">City</label>
+                                        <input
+                                            type="text"
+                                            name="city"
+                                            className={`checkout-input ${errors.city ? "input-error" : ""}`}
+                                            value={formData.city}
+                                            onChange={handleChange}
+                                            autoComplete="off"
+                                        />
+                                        {errors.city && (
+                                            <span className="error-text">{errors.city}</span>
+                                        )}
+                                    </div>
+
+                                    <div className="checkout-group">
+                                        <label htmlFor="state">State</label>
+                                        <input
+                                            type="text"
+                                            name="state"
+                                            className={`checkout-input ${errors.state ? "input-error" : ""}`}
+                                            value={formData.state}
+                                            onChange={handleChange}
+                                            autoComplete="off"
+                                        />
+                                        {errors.state && (
+                                            <span className="error-text">{errors.state}</span>
+                                        )}
+                                    </div>
+
+                                    <div className="checkout-group">
+                                        <label htmlFor="pin">PIN</label>
+                                        <input
+                                            type="text"
+                                            name="pin"
+                                            className={`checkout-input ${errors.pin ? "input-error" : ""}`}
+                                            value={formData.pin}
+                                            onChange={handleChange}
+                                            autoComplete="off"
+                                        />
+                                        {errors.pin && (
+                                            <span className="error-text">{errors.pin}</span>
+                                        )}
+                                    </div>
+                                </div>
+
+                                <div className="checkout-group">
+                                    <label htmlFor="phone">Phone</label>
+                                    <input
+                                        type="text"
+                                        name="phone"
+                                        className={`checkout-input ${errors.phone ? "input-error" : ""}`}
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        autoComplete="off"
+                                    />
+                                    {errors.phone && (
+                                        <span className="error-text">{errors.phone}</span>
+                                    )}
+                                </div>
+
+                                <button type="submit" className="btn-save">
+                                    Save Address
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 )}
             </div>

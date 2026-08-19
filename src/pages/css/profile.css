@@ -155,3 +155,46 @@
     }
 }
  
+.profile-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(42, 46, 104, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 40px 20px;
+    overflow-y: auto;
+}
+ 
+.profile-modal {
+    position: relative;
+    background-color: #fff;
+    padding: 32px;
+    border-radius: 12px;
+    border: 1px solid #e0ddc9;
+    max-width: 480px;
+    width: 100%;
+    box-shadow: 0 12px 45px rgba(0, 0, 0, 0.25);
+}
+ 
+.profile-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    color: #2A2E68;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+}
+ 
+@media (max-width: 600px) {
+    .profile-modal {
+        padding: 24px 20px;
+    }
+}
