@@ -54,6 +54,18 @@ const LoginPage = () => {
         if (!validate()) {
             return;
         }
+        const userData = {
+            emailOrPhone: formData.emailOrPhone,
+            name: formData.emailOrPhone.includes('@')
+                ? formData.emailOrPhone.split('@')[0]
+                : formData.emailOrPhone
+        }
+
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('user', JSON.stringify(userData));
+
+        window.dispatchEvent(new Event('authChange'));
+
         console.log(formData);
         navigate('/');
     };

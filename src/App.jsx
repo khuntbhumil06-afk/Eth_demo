@@ -16,6 +16,7 @@ import './pages/css/productdetails.css';
 import './pages/css/festival.css';
 import './pages/css/checkout.css';
 import './pages/css/add/address.css';
+import './pages/css/myprofile/fav.css';
 import { Route, Routes } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import { FavoritesProvider } from './context/FavoritesContext';

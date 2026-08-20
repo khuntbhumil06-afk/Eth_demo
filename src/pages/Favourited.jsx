@@ -83,7 +83,7 @@ const Favourites = () => {
                     </div> 
                     <div className="profile-divider"></div>
 
-                    <div className='fav-grid'>
+                    <div className='favourites-details'>
                         {favorites.length > 0 ? (
                             favorites.map((product) => (
                                 <div className="fav-card" key={product.id}>

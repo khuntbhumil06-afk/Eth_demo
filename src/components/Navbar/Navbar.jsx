@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Search, User, ShoppingCart, Globe, ChevronDown, X } from 'lucide-react'
 import logo from '../../assets/logo.png'
@@ -12,6 +12,11 @@ function Navbar() {
 
     const [selectedLang, setSelectedLang] = useState('EN');
     const [isLangOpen, setIsLangOpen] = useState(false);
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [user, setUser] = useState(null);
+    const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+    const userMenuRef = useRef(null);
 
     const language = [
         {
@@ -86,6 +91,50 @@ function Navbar() {
         }
     ];
 
+    useEffect(() => {
+        const checkAuth = () => {
+            const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const userData = localStorage.getItem('user');
+            setIsLoggedIn(loggedIn);
+            setUser(userData ? JSON.parse(userData) : null);
+        };
+
+        checkAuth();
+        window.addEventListener('authChange', checkAuth); 
+        window.addEventListener('storage', checkAuth);    
+
+        return () => {
+            window.removeEventListener('authChange', checkAuth);
+            window.removeEventListener('storage', checkAuth);
+        };
+    }, []);
+
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (userMenuRef.current && !userMenuRef.current.contains(e.target)) {
+                setIsUserMenuOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
+    const handleUserIconClick = () => {
+        if (isLoggedIn) {
+            setIsUserMenuOpen(!isUserMenuOpen);
+        } else {
+            navigate('/user');
+        }
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('user');
+        window.dispatchEvent(new Event('authChange'));
+        setIsUserMenuOpen(false);
+        navigate('/user');
+    };
+
     const handleSearchSubmit = (e) => {
         e.preventDefault();
         if (searchText.trim() !== "") {
@@ -146,11 +195,37 @@ function Navbar() {
                     )}
                 </div>
 
-                <button type="button" className="icon-btn" aria-label="User Account" onClick={() => {
-                    navigate("/user");
-                }}>
-                    <User size={20} />
-                </button>
+                <div className="user-account-container" style={{ position: 'relative' }} ref={userMenuRef}>
+                    <button
+                        type="button"
+                        className="icon-btn"
+                        aria-label="User Account"
+                        onClick={handleUserIconClick}
+                    >
+                        <User size={20} />
+                        {isLoggedIn && user?.name && (
+                            <span className="user-name-label">{user.name}</span>
+                        )}
+                    </button>
+
+                    {isLoggedIn && isUserMenuOpen && (
+                        <div className="dropdown user-dropdown">
+                            <Link
+                                to="/myprofile"
+                                onClick={() => setIsUserMenuOpen(false)}
+                            >
+                                My Profile
+                            </Link>
+                            <button
+                                type="button"
+                                className="logout-option"
+                                onClick={handleLogout}
+                            >
+                                Logout
+                            </button>
+                        </div>
+                    )}
+                </div>
 
                 <button type="button" className="icon-btn" aria-label="Cart" onClick={() => {
                     navigate("/cart");

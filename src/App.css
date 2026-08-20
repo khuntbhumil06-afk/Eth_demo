@@ -150,6 +150,42 @@ body {
   align-items: center;
 }
 
+.user-account-container .icon-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.user-name-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.user-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 160px;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+}
+
+.user-dropdown a,
+.user-dropdown .logout-option {
+    padding: 10px 16px;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    text-decoration: none;
+}
+
+.logout-option {
+    color: #b3261e;
+}
+
 .nav-link {
   color: yellow;
   font-size: 15px;
