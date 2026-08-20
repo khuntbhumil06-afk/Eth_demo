@@ -17,6 +17,7 @@ import './pages/css/member/blogdetails.css';
 import './pages/css/myprofile/profile.css';
 import './pages/css/myprofile/address.css';
 import './pages/css/myprofile/fav.css';
+import './pages/css/myprofile/reward.css';
 import { Route, Routes } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import { FavoritesProvider } from './context/FavoritesContext';
@@ -48,6 +49,7 @@ import BlogDetails from './pages/menu/BlogDetails.jsx';
 import MyProfile from './pages/profile/MyProfile.jsx';
 import AddressPage from './pages/profile/AddressPage.jsx';
 import Favourites from './pages/profile/Favourited.jsx';
+import Rewards from './pages/profile/Rewards.jsx';
 
 function App() {
   return (
@@ -62,28 +64,29 @@ function App() {
               <Route path='/cart' element={<CartPage />} />
               <Route path='/user' element={<LoginPage />} />
               <Route path='/signup' element={<SignupPage />} />
+              <Route path='/about' element={<AboutPage />} />
+              <Route path='/promotions' element={<Promotional />} />
               <Route path='/seller' element={<Seller />} />
               <Route path='/product' element={<ProductPage />} />
               <Route path='/chips' element={<Chips />} />
-              <Route path='/promotions' element={<Promotional />} />
-              <Route path='/about' element={<AboutPage />} />
               <Route path='/arrivals' element={<Arrivals />} />
               <Route path='/fruit' element={<FruitsNuts />} />
-              <Route path='/blog' element={<Blogs />} />
-              <Route path='/myprofile' element={<MyProfile />} />
-              <Route path='/address' element={<AddressPage />} />
-              <Route path='/seeds' element={<Seeds />} />
               <Route path='/product/:id' element={<ProductDetails />} />
-              <Route path='/blogs/:id' element={<BlogDetails />} />
+              <Route path='/checkout' element={<CheckoutPage />} />
+              <Route path='/seeds' element={<Seeds />} />
+              <Route path='/driedfruit' element={<DriedFruits />} />
+              <Route path='/snacks' element={<Snacks />} />
+              <Route path='/nuts' element={<PremiumNuts />} />
               <Route path='/festival' element={<Festival />} />
-              <Route path='/favourites' element={<Favourites />} />
+              <Route path='/confectionery' element={<Confectionery />} />
+              <Route path='/blog' element={<Blogs />} />
+              <Route path='/blogs/:id' element={<BlogDetails />} />
               <Route path='/contact' element={<ContactPage />} />
               <Route path='/membership' element={<Membership />} />
-              <Route path='/driedfruit' element={<DriedFruits />} />
-              <Route path='/confectionery' element={<Confectionery />} />
-              <Route path='/nuts' element={<PremiumNuts />} />
-              <Route path='/snacks' element={<Snacks />} />
-              <Route path='/checkout' element={<CheckoutPage />} />
+              <Route path='/address' element={<AddressPage />} />
+              <Route path='/favourites' element={<Favourites />} />
+              <Route path='/myprofile' element={<MyProfile />} />
+              <Route path='/reward' element={<Rewards />} />
             </Routes>
 
             <Footer />
