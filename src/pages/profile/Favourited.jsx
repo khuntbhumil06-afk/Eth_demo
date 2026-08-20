@@ -1,5 +1,5 @@
-import { useFavorites } from '../context/FavoritesContext';
-import { useCart } from '../context/CartContext';
+import { useFavorites } from '../../context/FavoritesContext';
+import { useCart } from '../../context/CartContext';
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Star, Heart, Bell } from "lucide-react";

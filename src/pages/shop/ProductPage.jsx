@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { ChevronDown, ChevronUp, Star, Bell, Heart } from 'lucide-react';
 import { Truck, Lock, Globe } from "lucide-react";
 import React, { useState } from 'react';
-import { useCart } from '../context/CartContext';
-import { useFavorites } from '../context/FavoritesContext';
+import { useCart } from '../../context/CartContext';
+import { useFavorites } from '../../context/FavoritesContext';
 
 const ProductPage = () => {
     const navigate = useNavigate();
