@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { ChevronDown, ChevronUp, Star, Bell } from 'lucide-react';
 import { Truck, Lock, Globe } from "lucide-react";
 import React, { useState } from 'react';
-import { useCart } from '../context/CartContext';
+import { useCart } from '../../context/CartContext';
 
 const Seller = () => {
     const navigate = useNavigate();

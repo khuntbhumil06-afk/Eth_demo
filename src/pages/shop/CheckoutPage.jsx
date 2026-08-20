@@ -1,4 +1,4 @@
-import { useCart } from '../context/CartContext';
+import { useCart } from '../../context/CartContext';
 import React, { useState } from 'react';
 import { ChevronDown, X } from 'lucide-react';
 

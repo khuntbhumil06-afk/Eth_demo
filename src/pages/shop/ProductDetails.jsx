@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import React, { useState } from 'react';
 import { Plus, Minus, X, Star, ChevronDown, ChevronUp } from 'lucide-react';
-import { useCart } from '../context/CartContext';
+import { useCart } from '../../context/CartContext';
 import { Check } from "lucide-react";
 import { Truck, Lock, Globe } from "lucide-react";
 import garden from '../../assets/garden.png';
