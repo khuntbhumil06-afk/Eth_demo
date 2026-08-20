@@ -26,7 +26,7 @@ const AddressPage = () => {
             label: "Profile Details",
         },
         {
-            link: "/favourited",
+            link: "/favourites",
             label: "Favourites",
         },
         {
