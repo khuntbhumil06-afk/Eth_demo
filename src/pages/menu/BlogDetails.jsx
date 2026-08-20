@@ -1,6 +1,6 @@
-import dried from '../assets/dried.png'
-import taste from '../assets/taste.png'
-import winter from '../assets/winter.png'
+import dried from '../../assets/dried.png'
+import taste from '../../assets/taste.png'
+import winter from '../../assets/winter.png'
 import { useNavigate, useParams } from "react-router-dom";
 import { Truck, Lock, Globe } from "lucide-react";
 import React, { useState } from 'react';

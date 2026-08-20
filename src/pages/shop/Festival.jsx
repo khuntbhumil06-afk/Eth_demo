@@ -4,10 +4,10 @@ import { Truck, Lock, Globe } from "lucide-react";
 import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import pistachios from '../assets/pistachios.png';
-import almonds from '../assets/almonds.png';
-import blackpeppercashewnuts from '../assets/blackpeppercashewnuts.png';
-import saltedcocktailnuts from '../assets/saltedcocktailnuts.png';
-import cashew from '../assets/cashew.png';
+import almonds from '../../assets/almonds.png';
+import blackpeppercashewnuts from '../../assets/blackpeppercashewnuts.png';
+import saltedcocktailnuts from '../../assets/saltedcocktailnuts.png';
+import cashew from '../../assets/cashew.png';
 
 const Festival = () => {
     const navigate = useNavigate();

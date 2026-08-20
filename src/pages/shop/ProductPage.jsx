@@ -1,7 +1,7 @@
-import pistachios from '../assets/pistachios.png';
-import almonds from '../assets/almonds.png';
-import blackpeppercashewnuts from '../assets/blackpeppercashewnuts.png';
-import saltedcocktailnuts from '../assets/saltedcocktailnuts.png';
+import pistachios from '../../assets/pistachios.png';
+import almonds from '../../assets/almonds.png';
+import blackpeppercashewnuts from '../../assets/blackpeppercashewnuts.png';
+import saltedcocktailnuts from '../../assets/saltedcocktailnuts.png';
 import { useNavigate } from "react-router-dom";
 import { ChevronDown, ChevronUp, Star, Bell, Heart } from 'lucide-react';
 import { Truck, Lock, Globe } from "lucide-react";

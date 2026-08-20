@@ -4,11 +4,11 @@ import { Plus, Minus, X, Star, ChevronDown, ChevronUp } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { Check } from "lucide-react";
 import { Truck, Lock, Globe } from "lucide-react";
-import garden from '../assets/garden.png';
-import pistachios from '../assets/pistachios.png';
-import almonds from '../assets/almonds.png';
-import blackpeppercashewnuts from '../assets/blackpeppercashewnuts.png';
-import saltedcocktailnuts from '../assets/saltedcocktailnuts.png';
+import garden from '../../assets/garden.png';
+import pistachios from '../../assets/pistachios.png';
+import almonds from '../../assets/almonds.png';
+import blackpeppercashewnuts from '../../assets/blackpeppercashewnuts.png';
+import saltedcocktailnuts from '../../assets/saltedcocktailnuts.png';
 
 const ProductDetails = () => {
     const productdetails = {

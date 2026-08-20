@@ -1,6 +1,6 @@
-import member from '../assets/member.png'
-import corporate from '../assets/corporate.png'
-import wholesale from '../assets/wholesale.png'
+import member from '../../assets/member.png'
+import corporate from '../../assets/corporate.png'
+import wholesale from '../../assets/wholesale.png'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 

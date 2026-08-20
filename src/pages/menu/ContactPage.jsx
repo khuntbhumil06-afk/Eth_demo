@@ -1,4 +1,4 @@
-import tong from '../assets/tong.png'
+import tong from '../../assets/tong.png'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
