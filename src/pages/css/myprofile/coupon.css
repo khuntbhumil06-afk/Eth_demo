@@ -1,0 +1,58 @@
+/* ==== ACTIVE COUPONS PAGES ==== */
+.coupon-table {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.coupon-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+.coupon-header .coupon-col {
+    color: #2A2E68;
+    font-weight: 800;
+    font-size: 15px;
+}
+
+.coupon-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    position: relative;
+    border-bottom: 2px solid #2A2E68;
+}
+
+.coupon-row .coupon-col.code{
+  font-weight: 700;
+}
+
+.coupon-col {
+    flex: 1;
+    color: #2A2E68;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .profile-grid {
+    flex-direction: column;
+  }
+ 
+  .profile-side {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+ 
+  .profile-divider {
+    display: none;
+  }
+ 
+  .coupon-header,
+  .coupon-row {
+    font-size: 13px;
+  }
+}

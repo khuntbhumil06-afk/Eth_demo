@@ -35,29 +35,26 @@ const Rewards = () => {
         }
     ];
 
-    const [history] = useState([
+    const history = [
         {
-            id: 1,
-            Date: "05/11/2025",
-            Label: "Order No. #1234567",
-            Type: "Earned",
-            Points: 750,
+            date: "05/11/2025",
+            order: "#1234567",
+            type: "Earned",
+            points: 750
         },
         {
-            id: 2,
-            Date: "08/11/2025",
-            Label: "Order No. #1234567",
-            Type: "Used",
-            Points: 350,
+            date: "08/11/2025",
+            order: "#1234567",
+            type: "Used",
+            points: 350,
         },
         {
-            id: 3,
-            Date: "11/11/2025",
-            Label: "Order No. #1296434",
-            Type: "Used",
-            Points: 250,
+            date: "11/11/2025",
+            order: "#1296434",
+            type: "Used",
+            points: 250,
         }
-    ]);
+    ];
 
     const handleTabCick = (tab) => {
         setActiveTab(tab.label);
@@ -65,9 +62,6 @@ const Rewards = () => {
     };
 
     const handleLogout = () => {
-        localStorage.removeItem('isLoggedIn');
-        localStorage.removeItem('user');
-        window.dispatchEvent(new Event('authChange'));
         navigate("/user");
     }
 
@@ -139,26 +133,42 @@ const Rewards = () => {
                                 {showHistory ? "Hide History" : "History"}
                             </button>
                         </div>
-
                         {showHistory && (
                             <div className="reward-history">
+                                <div className="reward-table">
+                                    <div className="reward-header">
+                                        <span className="reward-col date">
+                                            Date
+                                        </span>
+                                        <span className="reward-col">
+                                            Order No.
+                                        </span>
+                                        <span className="reward-col">
+                                            Type
+                                        </span>
+                                        <span className="reward-col">
+                                            Points
+                                        </span>
+                                    </div>
+                                </div>
                                 {history.length > 0 ? (
-                                    history.map((item) => (
-                                        <div className="reward-item" key={item.id}>
-                                            <div className="reward-left">
-                                                <span className={`reward-tag ${item.Type.toLowerCase()}`}>
-                                                    {item.Type}
-                                                </span>
-                                                <span className="reward-order">
-                                                    {item.Label}
-                                                </span>
-                                            </div>
-                                            <div className="reward-right">
-                                                <span className={`reward-points ${item.Type === "Earned" ? "positive" : "negative"}`}>
-                                                    {item.Type === "Earned" ? "+" : "-"}{item.Points}
-                                                </span>
-                                                <span className="reward-date">{item.Date}</span>
-                                            </div>
+                                    history.map((history, index) => (
+                                        <div className="reward-row-table" key={index}>
+                                            <span className="reward-col date">
+                                                {history.date}
+                                            </span>
+                                            <span className="reward-col">
+                                                {history.order}
+                                            </span>
+                                            <span className="reward-col">
+                                                {history.type}
+                                            </span>
+                                            <span
+                                                className={`reward-points ${history.type === "Earned" ? "points-earned" : "points-used"
+                                                    }`}
+                                            >
+                                                {history.type === "Earned" ? "+" : "-"}{history.points}
+                                            </span>
                                         </div>
                                     ))
                                 ) : (
