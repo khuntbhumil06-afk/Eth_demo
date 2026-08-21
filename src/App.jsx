@@ -19,6 +19,7 @@ import './pages/css/myprofile/address.css';
 import './pages/css/myprofile/fav.css';
 import './pages/css/myprofile/reward.css';
 import './pages/css/myprofile/coupon.css';
+import './pages/css/myprofile/order.css';
 import { Route, Routes } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import { FavoritesProvider } from './context/FavoritesContext';
@@ -52,6 +53,7 @@ import AddressPage from './pages/profile/AddressPage.jsx';
 import Favourites from './pages/profile/Favourited.jsx';
 import Rewards from './pages/profile/Rewards.jsx';
 import Coupons from './pages/profile/Coupons.jsx';
+import Orders from './pages/profile/Orders.jsx';
 
 function App() {
   return (
@@ -90,6 +92,7 @@ function App() {
               <Route path='/myprofile' element={<MyProfile />} />
               <Route path='/reward' element={<Rewards />} />
               <Route path='/coupon' element={<Coupons />} />
+              <Route path='/orders' element={<Orders />} />
             </Routes>
 
             <Footer />

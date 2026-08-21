@@ -195,6 +195,16 @@ const CheckoutPage = () => {
         validate();
     };
 
+    const saveOrderToStorage = (orderData) => {
+        try {
+            const existingOrders = JSON.parse(localStorage.getItem("tongGardenOrders")) || [];
+            const updatedOrders = [orderData, ...existingOrders];
+            localStorage.setItem("tongGardenOrders", JSON.stringify(updatedOrders));
+        } catch (err) {
+            console.error("Order save failed:", err);
+        }
+    };
+
     const handlePayNow = () => {
         if (!selectedPaymentId) {
             setPaymentError("Please select a payment method before proceeding.");
@@ -207,6 +217,35 @@ const CheckoutPage = () => {
         setPaymentError("");
         const newOrderNumber = Math.floor(10000000 + Math.random() * 90000000);
         setOrderNumber(newOrderNumber);
+
+        const selectedPaymentObj = paymentMethod.find((p) => p.id === selectedPaymentId);
+        const orderData = {
+            orderNumber: newOrderNumber,
+            date: new Date().toISOString(),
+            status: "Placed",
+            items: cartItems || [],
+            subtotal,
+            couponDiscount: appliedCouponDiscount,
+            rewardDiscount: appliedRewardDiscount,
+            tax,
+            shippingCharge,
+            total,
+            rewardPointsEarned,
+            payment: selectedPaymentObj?.label || "",
+            shippingAddress: {
+                firstName: formData.firstName,
+                lastName: formData.lastName,
+                addressLine1: formData.addressLine1,
+                addressLine2: formData.addressLine2,
+                city: formData.city,
+                state: formData.state,
+                pin: formData.pin,
+                phone: formData.phone,
+                country: formData.country
+            }
+        };
+        saveOrderToStorage(orderData);
+
         setShowOrderConfirm(true);
     };
 
