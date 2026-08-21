@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { ChevronDown, ChevronUp, Star, Bell } from 'lucide-react';
+import { ChevronDown, ChevronUp, Star, Bell, Heart } from 'lucide-react';
 import { Truck, Lock, Globe } from "lucide-react";
 import React, { useState } from 'react';
 import { useCart } from '../../context/CartContext';
+import { useFavorites } from '../../context/FavoritesContext';
 import pistachios from '../../assets/pistachios.png';
 import almonds from '../../assets/almonds.png';
 import blackpeppercashewnuts from '../../assets/blackpeppercashewnuts.png';
@@ -20,6 +21,7 @@ const Festival = () => {
     const [selectedOffer, setSelectedOffer] = useState("");
     const [isBrandOpen, setIsBrandOpen] = useState(true);
     const [isOfferOpen, setIsOfferOpen] = useState(true);
+    const { toggleFavorite, isFavorite } = useFavorites();
 
     const handleAddToCart = (product) => {
         addToCart(product);
@@ -410,6 +412,16 @@ const Festival = () => {
                                         <div className="festival-rating">
                                             <Star size={14} fill="#FFC107" stroke="#FFC107" />
                                             <span>{product.rating}</span>
+                                            <button type='button' className='prod-fav'
+                                                onClick={() => toggleFavorite(product)}
+                                                aria-label='Add to Favorites'
+                                            >
+                                                <Heart
+                                                    size={18}
+                                                    fill={isFavorite(product.id) ? "#F28706" : "none"}
+                                                    stroke="#F28706"
+                                                />
+                                            </button>
                                         </div>
 
                                         <h3 className="festival-name">{product.name}</h3>
