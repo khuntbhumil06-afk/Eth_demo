@@ -1648,16 +1648,261 @@
   cursor: pointer;
 }
 
-@media (max-width: 600px) {
-  .signup-label {
-    font-size: 16px;
-  }
 
+
+/* ---------- TABLET (<=1024px) ---------- */
+@media (max-width: 1024px) {
+  .prod-container,
+  .promo-container {
+    padding: 40px 24px;
+  }
+ 
+  .prod-content-area,
+  .promo-content-area {
+    padding: 30px 20px 20px;
+  }
+ 
+  .nav-prod,
+  .promo-main-layout {
+    flex-direction: column;
+  }
+ 
+  .prod-sidebar,
+  .promo-sidebar {
+    width: 100%;
+  }
+ 
+  .prod-grid,
+  .promo-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+ 
+  .about-hero-card {
+    flex: 0 1 calc(50% - 12px);
+  }
+ 
+  .prod-item,
+  .promo-item,
+  .about-item {
+    padding: 0 24px;
+  }
+ 
+  .about-images img {
+    max-height: 380px;
+  }
+}
+ 
+/* ---------- SMALL TABLET / LARGE PHONE (<=768px) ---------- */
+@media (max-width: 768px) {
+  .prod-container,
+  .promo-container,
+  .prod-text,
+  .promo-text,
+  .prod-got,
+  .promo-got,
+  .about-container,
+  .about-text,
+  .about-hero,
+  .about-herosection {
+    padding: 40px 20px;
+  }
+ 
+  .prod-heading,
+  .promo-heading,
+  .prod-h2,
+  .promo-h2,
+  .about-heading {
+    font-size: 26px;
+  }
+ 
+  .heading-h1,
+  .heading-h2,
+  .login-heading,
+  .signup-heading {
+    font-size: 30px;
+  }
+ 
+  .prod-grid,
+  .promo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+ 
+  .prod-category-row,
+  .nav-promo {
+    justify-content: center;
+  }
+ 
+  .about-hero-card {
+    flex: 0 1 100%;
+  }
+ 
+  .cart-page-grid {
+    flex-direction: column;
+  }
+ 
+  .cart-summary-card {
+    max-width: 100%;
+    width: 100%;
+  }
+ 
+  .prod-head,
+  .promo-head,
+  .about-head {
+    padding: 24px 12px;
+    gap: 16px;
+  }
+ 
+  .prod-item,
+  .promo-item,
+  .about-item {
+    padding: 0 16px;
+  }
+ 
+  .prod-item:not(:last-child)::after,
+  .promo-item:not(:last-child)::after,
+  .about-item:not(:last-child)::after {
+    height: 40px;
+  }
+ 
+  .prod-label,
+  .promo-label,
+  .about-label {
+    font-size: 18px;
+  }
+ 
+  .about-images img {
+    max-height: 280px;
+  }
+ 
+  .heading-h2,
+  .subheading-p3 {
+    text-align: center;
+    margin-top: 0;
+  }
+ 
+  .prod-faq-question span,
+  .promo-faq-question span {
+    font-size: 18px;
+  }
+ 
+  .prod-faq-answer,
+  .promo-faq-answer {
+    font-size: 14px;
+  }
+ 
+  .social-login,
   .social-signup {
     flex-direction: column;
   }
-
-  .signup-btn {
+}
+ 
+/* ---------- PHONE (<=480px) ---------- */
+@media (max-width: 480px) {
+  .prod-container,
+  .promo-container,
+  .prod-text,
+  .promo-text,
+  .prod-got,
+  .promo-got,
+  .about-container,
+  .about-text,
+  .about-hero,
+  .about-herosection,
+  .login-container,
+  .signup-container {
+    padding: 28px 14px;
+  }
+ 
+  .prod-content-area,
+  .promo-content-area {
+    padding: 20px 12px 16px;
+  }
+ 
+  .prod-grid,
+  .promo-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+ 
+  .prod-card,
+  .promo-card {
+    width: 100%;
+  }
+ 
+  .prod-heading,
+  .promo-heading,
+  .prod-h2,
+  .promo-h2,
+  .about-heading {
+    font-size: 22px;
+  }
+ 
+  .heading-h1,
+  .heading-h2,
+  .login-heading,
+  .signup-heading {
+    font-size: 24px;
+  }
+ 
+  .subheading-p,
+  .subheading-p3 {
     font-size: 16px;
+  }
+ 
+  .heading-p,
+  .sub-text {
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+ 
+  .login-form,
+  .signup-form {
+    max-width: 100%;
+  }
+ 
+  .login-label,
+  .signup-label {
+    font-size: 15px;
+  }
+ 
+  .login-btn,
+  .signup-btn {
+    font-size: 15px;
+  }
+ 
+  .prod-head,
+  .promo-head,
+  .about-head {
+    flex-direction: column;
+    gap: 20px;
+  }
+ 
+  .prod-item,
+  .promo-item,
+  .about-item {
+    padding: 0;
+  }
+ 
+  .prod-item:not(:last-child)::after,
+  .promo-item:not(:last-child)::after,
+  .about-item:not(:last-child)::after {
+    display: none;
+  }
+ 
+  .about-images img {
+    max-height: 200px;
+  }
+ 
+  .cart-row {
+    flex-wrap: wrap;
+  }
+ 
+  .cart-row-total {
+    margin-left: auto;
+  }
+ 
+  .about-hero-btn {
+    width: 100%;
   }
 }

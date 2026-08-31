@@ -409,3 +409,119 @@
     font-weight: 800;
     color: #111;
 }
+
+
+/* ---------- TABLET (<=1024px) ---------- */
+@media (max-width: 1024px) {
+    .arrival-container {
+        padding: 40px 24px;
+    }
+ 
+    .arrival-content-area {
+        padding: 30px 20px 20px;
+    }
+ 
+    .nav-arrival {
+        flex-direction: column;
+    }
+ 
+    .arrival-sidebar {
+        width: 100%;
+    }
+ 
+    .arrival-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+ 
+    .arrival-item {
+        padding: 0 24px;
+    }
+}
+ 
+/* ---------- SMALL TABLET / LARGE PHONE (<=768px) ---------- */
+@media (max-width: 768px) {
+    .arrival-container,
+    .arrival-text,
+    .arrival-got {
+        padding: 40px 20px;
+    }
+ 
+    .arrival-heading,
+    .arrival-h2 {
+        font-size: 26px;
+    }
+ 
+    .arrival-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+ 
+    .arrival-category-row {
+        justify-content: center;
+    }
+ 
+    .arrival-head {
+        padding: 24px 12px;
+        gap: 16px;
+    }
+ 
+    .arrival-item {
+        padding: 0 16px;
+    }
+ 
+    .arrival-item:not(:last-child)::after {
+        height: 40px;
+    }
+ 
+    .arrival-label {
+        font-size: 18px;
+    }
+ 
+    .arrival-faq-question span {
+        font-size: 18px;
+    }
+ 
+    .arrival-faq-answer {
+        font-size: 14px;
+    }
+}
+ 
+/* ---------- PHONE (<=480px) ---------- */
+@media (max-width: 480px) {
+    .arrival-container,
+    .arrival-text,
+    .arrival-got {
+        padding: 28px 14px;
+    }
+ 
+    .arrival-content-area {
+        padding: 20px 12px 16px;
+    }
+ 
+    .arrival-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+ 
+    .arrival-card {
+        width: 100%;
+    }
+ 
+    .arrival-heading,
+    .arrival-h2 {
+        font-size: 22px;
+    }
+ 
+    .arrival-head {
+        flex-direction: column;
+        gap: 20px;
+    }
+ 
+    .arrival-item {
+        padding: 0;
+    }
+ 
+    .arrival-item:not(:last-child)::after {
+        display: none;
+    }
+}

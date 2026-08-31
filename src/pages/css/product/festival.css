@@ -413,3 +413,113 @@
     font-weight: 800;
     color: #111;
 }
+
+
+/* Tablets (<=1024px) */
+@media (max-width: 1024px) {
+    .festival-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+ 
+    .festival-sidebar {
+        width: 200px;
+    }
+ 
+    .festival-container,
+    .festival-content-area,
+    .festival-text,
+    .festival-got,
+    .festival-head {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
+ 
+/* Small tablets / large phones (<=768px) */
+@media (max-width: 768px) {
+    .nav-festival {
+        flex-direction: column;
+    }
+ 
+    .festival-sidebar {
+        width: 100%;
+    }
+ 
+    .festival-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+ 
+    .festival-container,
+    .festival-content-area {
+        padding: 40px 20px;
+    }
+ 
+    .festival-heading,
+    .festival-h2 {
+        font-size: 26px;
+    }
+ 
+    .festival-head {
+        gap: 20px;
+        padding: 30px 16px;
+    }
+ 
+    .festival-item {
+        padding: 0 20px;
+        flex: 1 1 45%;
+        justify-content: center;
+    }
+ 
+    .festival-item:not(:last-child)::after {
+        display: none;
+    }
+ 
+    .festival-label {
+        font-size: 18px;
+    }
+ 
+    .festival-faq-question span {
+        font-size: 18px;
+    }
+ 
+    .festival-text,
+    .festival-got {
+        padding: 30px 20px;
+    }
+}
+ 
+/* Phones (<=480px) */
+@media (max-width: 480px) {
+    .festival-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+ 
+    .festival-card {
+        width: 100%;
+    }
+ 
+    .festival-heading,
+    .festival-h2 {
+        font-size: 22px;
+    }
+ 
+    .btn-festival {
+        padding: 6px 14px;
+        font-size: 13px;
+    }
+ 
+    .festival-container,
+    .festival-content-area {
+        padding: 30px 12px;
+    }
+ 
+    .festival-item {
+        flex: 1 1 100%;
+        padding: 0 10px;
+    }
+ 
+    .festival-faq-answer {
+        font-size: 14px;
+    }
+}

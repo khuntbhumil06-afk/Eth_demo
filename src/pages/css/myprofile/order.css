@@ -468,3 +468,48 @@
         grid-template-columns: 1fr;
     }
 }
+
+@media (max-width: 480px) {
+    .order-container {
+        padding: 12px;
+        align-items: flex-end;
+    }
+ 
+    .order-modal,
+    .cancel-modal {
+        padding: 20px;
+        border-radius: 16px 16px 0 0;
+        max-height: 92vh;
+    }
+ 
+    .cancel-confirm-modal {
+        padding: 26px 18px;
+    }
+ 
+    .order-card-top {
+        gap: 10px;
+    }
+ 
+    .order-card-img-wrap,
+    .order-card-img {
+        width: 56px;
+        height: 56px;
+    }
+ 
+    .order-card-title {
+        font-size: 14px;
+    }
+ 
+    .order-card-actions,
+    .order-actions {
+        flex-direction: column;
+    }
+ 
+    .order-details-row {
+        flex-wrap: wrap;
+    }
+ 
+    .order-details-value {
+        text-align: left;
+    }
+}

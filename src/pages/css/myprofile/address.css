@@ -117,4 +117,28 @@
     .edit-address {
         padding: 24px 20px;
     }
+ 
+    .profile-card {
+        gap: 14px;
+    }
+ 
+    .address-card {
+        min-width: 100%;
+        max-width: 100%;
+    }
+}
+ 
+@media (max-width: 400px) {
+    .edit-address-wrapper {
+        padding: 20px 10px;
+    }
+ 
+    .edit-address {
+        padding: 20px 14px;
+    }
+ 
+    .address-modal {
+        top: 10px;
+        right: 10px;
+    }
 }
