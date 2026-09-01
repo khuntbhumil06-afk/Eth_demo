@@ -1,6 +1,7 @@
 import tong from '../../assets/tong.png'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import Button from '../../components/Common/Button';
 
 const ContactPage = () => {
     const navigate = useNavigate();
@@ -153,9 +154,9 @@ const ContactPage = () => {
 
                             </div>
 
-                            <button type="submit" className="btn-form">
+                            <Button type="submit">
                                 Submit
-                            </button>
+                            </Button>
                         </form>
                     </div>
                 </div>

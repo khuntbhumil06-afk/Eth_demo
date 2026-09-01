@@ -9,11 +9,19 @@ import pistachios from '../../assets/pistachios.png';
 import almonds from '../../assets/almonds.png';
 import blackpeppercashewnuts from '../../assets/blackpeppercashewnuts.png';
 import saltedcocktailnuts from '../../assets/saltedcocktailnuts.png';
+import ProductCard from '../../components/Common/ProductCard';
+import FaqAccordion from '../../components/Common/FaqAccordion';
+import FeatureList from '../../components/Common/FeatureList';
+import Button from '../../components/Common/Button';
 
 const ProductDetails = () => {
     const productdetails = {
         image: garden
     }
+
+    const handleNotifyMe = (product) => {
+        alert(`We'll notify you when "${product.name}" is back in stock!`);
+    };
 
     const [isFormOpen, setIsFormOpen] = useState(false)
     const [formText, setFormText] = useState({
@@ -392,12 +400,12 @@ const ProductDetails = () => {
                     ))}
                 </div>
 
-                <button type="button" className="pd-write-review"
+                <Button type="button" className="pd-write-review"
                     aria-label='Form'
                     onClick={() => setIsFormOpen(true)}
                 >
                     Write a review
-                </button>
+                </Button>
             </div>
 
             <div className="pd-card">
@@ -410,63 +418,23 @@ const ProductDetails = () => {
                 <h2 className='prod-h2'>Recommendation For You</h2>
                 <div className='prod-grid'>
                     {productdetailslist.map((product) => (
-                        <div className="prod-card" key={product.id}>
-                            <div className="prod-rating">
-                                <Star size={14} fill="#FFC107" stroke="#FFC107" />
-                                <span>{product.rating}</span>
-                            </div>
-
-                            <h3 className="prod-name">{product.name}</h3>
-
-                            <div className="prod-image-wrap">
-                                <img src={product.image} alt={product.name} />
-                            </div>
-
-                            <p className="prod-price">
-                                Rs. {product.price ? product.price.toFixed(2) : "0.00"}
-                            </p>
-
-                            <div className="prod-btn-row">
-                                <button
-                                    type="button"
-                                    className={`prod-btnall ${!product.inStock ? 'out-of-stock' : ''}`}
-                                    disabled={!product.inStock}
-                                    onClick={() => handleAddToCart(product)}
-                                >
-                                    {product.inStock ? 'Add to Cart' : 'Out of Stock'}
-                                </button>
-                            </div>
-                        </div>
+                        <ProductCard
+                            key={product.id}
+                            product={product}
+                            showFav={false}
+                            onAddToCart={handleAddToCart}
+                            onNotifyMe={handleNotifyMe}
+                        />
                     ))}
                 </div>
             </div>
 
             <div className='prod-got'>
                 <h2 className='prod-h2'>Got Any Questions?</h2>
-                <div className='prod-faq-list'>
-                    {faqs.map((faq, index) => (
-                        <div className='prod-faq-item' key={index}>
-                            <button type='button' className='prod-faq-question' onClick={() => toggleFaq(index)}>
-                                <span>{faq.question}</span>
-                                {openFaq === index ? <ChevronUp size={22} /> : <ChevronDown size={22} />}
-                            </button>
-                            {openFaq === index && (
-                                <p className="prod-faq-answer">{faq.answer}</p>
-                            )}
-                            <div className="prod-faq-divider"></div>
-                        </div>
-                    ))}
-                </div>
+                <FaqAccordion faqs={faqs} />
             </div>
 
-            <div className="prod-head">
-                {features.map((item) => (
-                    <div className="prod-item" key={item.id}>
-                        <span className="prod-icon">{item.icon}</span>
-                        <span className="prod-label">{item.label}</span>
-                    </div>
-                ))}
-            </div>
+            <FeatureList features={features} />
 
             {isFormOpen && (
                 <div className="form-overlay" onClick={closeForm}>
@@ -529,7 +497,7 @@ const ProductDetails = () => {
                             />
                             {errors.name && (
                                 <span className="error-text">{errors.name}</span>
-                            )}<br/>
+                            )}<br />
 
                             <label className="form-label" htmlFor="email">
                                 Email
@@ -547,9 +515,9 @@ const ProductDetails = () => {
                                 <span className="error-text">{errors.email}</span>
                             )}<br />
 
-                            <button type="submit" className="btn-individual form-submit">
+                            <Button type="submit">
                                 Submit
-                            </button>
+                            </Button>
                         </form>
                     </div>
                 </div>

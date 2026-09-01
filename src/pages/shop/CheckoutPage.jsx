@@ -1,5 +1,6 @@
 import { useCart } from '../../context/CartContext';
 import React, { useState } from 'react';
+import Button from '../../components/Common/Button';
 import { ChevronDown, X } from 'lucide-react';
 
 const CheckoutPage = () => {
@@ -871,18 +872,18 @@ const CheckoutPage = () => {
                         <div className='order-divider'></div>
 
                         <div className='order-actions'>
-                            <button type='button'
+                            <Button type='button'
                                 className='btn-cancel'
                                 onClick={handleCancelOrder}
                             >
                                 Cancel Order
-                            </button>
-                            <button type='button'
+                            </Button>
+                            <Button type='button'
                                 className='btn-download'
                                 onClick={handleDownloadReceipt}
                             >
                                 Download Receipt
-                            </button>
+                            </Button>
                         </div>
                     </div>
                 </div>

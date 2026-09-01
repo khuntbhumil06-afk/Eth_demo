@@ -1,9 +1,13 @@
 import dried from '../../assets/dried.png'
 import taste from '../../assets/taste.png'
 import winter from '../../assets/winter.png'
+
 import { useNavigate } from "react-router-dom";
 import { Truck, Lock, Globe } from "lucide-react";
 import React, { useState } from 'react';
+
+import FeatureList from '../../components/Common/FeatureList';
+
 
 const Blogs = () => {
     const navigate = useNavigate();
@@ -237,14 +241,7 @@ const Blogs = () => {
                 </div>
             </div>
 
-            <div className="blogs-head">
-                {features.map((item) => (
-                    <div className="blogs-item" key={item.id}>
-                        <span className="blogs-icon">{item.icon}</span>
-                        <span className="blogs-label">{item.label}</span>
-                    </div>
-                ))}
-            </div>
+            <FeatureList features={features} />
         </>
     );
 }

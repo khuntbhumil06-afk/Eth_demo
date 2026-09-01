@@ -3,6 +3,7 @@ import corporate from '../../assets/corporate.png'
 import wholesale from '../../assets/wholesale.png'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import Button from '../../components/Common/Button';
 
 const Membership = () => {
     const navigate = useNavigate();
@@ -245,9 +246,9 @@ const Membership = () => {
                                 <span className="error-text">{errors.message}</span>
                             )}<br/>
 
-                            <button type="submit" className="btn-individual form-submit">
+                            <Button type="submit">
                                 Submit
-                            </button>
+                            </Button>
                         </form>
                     </div>
                 </div>

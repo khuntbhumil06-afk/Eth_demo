@@ -1,26 +1,30 @@
+import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import { Truck, Lock, Globe } from "lucide-react";
+
 import pistachios from '../../assets/pistachios.png';
 import almonds from '../../assets/almonds.png';
 import blackpeppercashewnuts from '../../assets/blackpeppercashewnuts.png';
 import saltedcocktailnuts from '../../assets/saltedcocktailnuts.png';
-import { useNavigate } from "react-router-dom";
-import { ChevronDown, ChevronUp, Star, Bell, Heart } from 'lucide-react';
-import { Truck, Lock, Globe } from "lucide-react";
-import React, { useState } from 'react';
+
+import SidebarFilters from '../../components/Common/SidebarFilters';
+import ProductCard from '../../components/Common/ProductCard';
+import FaqAccordion from '../../components/Common/FaqAccordion';
+import FeatureList from '../../components/Common/FeatureList';
+
 import { useCart } from '../../context/CartContext';
 import { useFavorites } from '../../context/FavoritesContext';
 
 const Seeds = () => {
     const navigate = useNavigate();
-    const [openFaq, setOpenFaq] = useState(0);
     const { addToCart } = useCart();
+    const { toggleFavorite, isFavorite } = useFavorites();
 
     const [selectedSort, setSelectedSort] = useState("");
     const [selectedBrands, setSelectedBrands] = useState([]);
     const [maxPrice, setMaxPrice] = useState(1500);
     const [selectedOffer, setSelectedOffer] = useState("");
-    const [isBrandOpen, setIsBrandOpen] = useState(true);
-    const [isOfferOpen, setIsOfferOpen] = useState(true);
-    const { toggleFavorite, isFavorite } = useFavorites();
+    const [activeCategory, setActiveCategory] = useState("Seeds");
 
     const handleAddToCart = (product) => {
         addToCart(product);
@@ -30,18 +34,6 @@ const Seeds = () => {
     const handleNotifyMe = (product) => {
         alert(`We'll notify you when "${product.name}" is back in stock!`);
     };
-
-    const categories = [
-        "All",
-        "Snacks",
-        "Chips",
-        "Premium Nuts",
-        "Seeds",
-        "Fruits & Nuts",
-        "Dried Fruits",
-        "Confectionery"
-    ];
-    const [activeCategory, setActiveCategory] = useState("Seeds");
 
     const seedslist = [
         {
@@ -314,10 +306,6 @@ const Seeds = () => {
         },
     ];
 
-    const toggleFaq = (index) => {
-        setOpenFaq(openFaq === index ? -1 : index);
-    };
-
     const features = [
         {
             id: 1,
@@ -338,114 +326,29 @@ const Seeds = () => {
 
     return (
         <>
-            <div className="seeds-container">
-                <h1 className="seeds-heading">Seeds</h1>
+            <div className="prod-container">
+                <h1 className="prod-heading">Seeds</h1>
             </div>
 
-            <div className="seeds-content-area">
-                <div className="nav-seeds">
-                    <aside className="seeds-sidebar">
-                        <div className="seeds-group">
-                            <h3 className="seeds-title">Sort By</h3>
-                            {["lowToHigh", "highToLow", "bestSellers", "aToZ", "zToA"].map((sortKey) => (
-                                <label key={sortKey} className="checkbox-label">
-                                    <input
-                                        type="checkbox"
-                                        checked={selectedSort === sortKey}
-                                        onChange={() => setSelectedSort(selectedSort === sortKey ? "" : sortKey)}
-                                    />
-                                    {sortKey === "lowToHigh" && " Price low to high"}
-                                    {sortKey === "highToLow" && " Price high to low"}
-                                    {sortKey === "bestSellers" && " Best Sellers"}
-                                    {sortKey === "aToZ" && " A to Z"}
-                                    {sortKey === "zToA" && " Z to A"}
-                                </label>
-                            ))}
-                        </div>
+            <div className="prod-content-area">
+                <div className="nav-prod">
+                    <SidebarFilters
+                        selectedSort={selectedSort}
+                        setSelectedSort={setSelectedSort}
+                        selectedBrands={selectedBrands}
+                        handleBrandChange={handleBrandChange}
+                        maxPrice={maxPrice}
+                        setMaxPrice={setMaxPrice}
+                        selectedOffer={selectedOffer}
+                        setSelectedOffer={setSelectedOffer}
+                    />
 
-                        <div className="filter-divider"></div>
-
-                        <h2 className="seeds-heading">Filters</h2>
-
-                        <div className="seeds-group">
-                            <div className="seeds-header" onClick={() => setIsBrandOpen(!isBrandOpen)}>
-                                <span>Brands</span>
-                                {isBrandOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                            </div>
-                            {isBrandOpen && (
-                                <div className="seeds-content">
-                                    {["Amore", "Noi", "Nutri One", "Sun Gift", "Yogi"].map((brand) => (
-                                        <label key={brand} className="checkbox-label">
-                                            <input
-                                                type="checkbox"
-                                                checked={selectedBrands.includes(brand)}
-                                                onChange={() => handleBrandChange(brand)}
-                                            />
-                                            {" "}{brand}
-                                        </label>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="seeds-group">
-                            <h3 className="seeds-title">Price Range</h3>
-                            <input
-                                type="range"
-                                min="1"
-                                max="1500"
-                                value={maxPrice}
-                                onChange={(e) => setMaxPrice(Number(e.target.value))}
-                                className="seeds-slider"
-                            />
-                            <div className="seeds-range-values">
-                                <span>01</span>
-                                <span>{maxPrice}</span>
-                            </div>
-                        </div>
-
-                        <div className="seeds-group">
-                            <div className="seeds-header" onClick={() => setIsOfferOpen(!isOfferOpen)}>
-                                <span>Offers</span>
-                                {isOfferOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                            </div>
-                            {isOfferOpen && (
-                                <div className="seeds-content">
-                                    {[
-                                        { label: "00% - 20%", value: "0-20" },
-                                        { label: "20% - 40%", value: "20-40" },
-                                        { label: "40% - 60%", value: "40-60" },
-                                    ].map((offer) => (
-                                        <label key={offer.value} className="checkbox-label">
-                                            <input
-                                                type="checkbox"
-                                                checked={selectedOffer === offer.value}
-                                                onChange={() => setSelectedOffer(selectedOffer === offer.value ? "" : offer.value)}
-                                            />
-                                            {" "}{offer.label}
-                                        </label>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                    </aside>
-
-                    <div className="seeds-main">
-                        <div className="seeds-category-row">
-                            {/* {categories.map((product, index) => (
-                                <button
-                                    type="button"
-                                    className={`btn-prod ${activeCategory === product ? 'active' : ''}`}
-                                    key={index}
-                                    onClick={() => setActiveCategory(product)}
-                                >
-                                    {product}
-                                </button>
-                            ))} */}
+                    <div className="prod-main">
+                        <div className="prod-category-row">
                             {categorielist.map((cat, index) => (
                                 <button
                                     type="button"
-                                    className={`btn-seeds ${activeCategory === cat.label ? 'active' : ''}`}
+                                    className={`btn-prod ${activeCategory === cat.label ? 'active' : ''}`}
                                     key={index}
                                     onClick={() => navigate(cat.link)}
                                 >
@@ -454,148 +357,49 @@ const Seeds = () => {
                             ))}
                         </div>
 
-                        <div className="seeds-grid prod-grid-bordered">
+                        <div className="prod-grid prod-grid-bordered">
                             {filteredList.length > 0 ? (
                                 filteredList.map((product) => (
-                                    <div className="seeds-card" key={product.id}>
-                                        <div className="seeds-rating">
-                                            <Star size={14} fill="#FFC107" stroke="#FFC107" />
-                                            <span>{product.rating}</span>
-                                            <button type='button' className='prod-fav'
-                                                onClick={() => toggleFavorite(product)}
-                                                aria-label='Add to Favorites'
-                                            >
-                                                <Heart
-                                                    size={18}
-                                                    fill={isFavorite(product.id) ? "#F28706" : "none"}
-                                                    stroke="#F28706"
-                                                />
-                                            </button>
-                                        </div>
-
-                                        <h3 className="seeds-name">{product.name}</h3>
-
-                                        <div className="seeds-image-wrap"
-                                            onClick={() => navigate(`/product/${product.id}`, { state: { product } })}
-                                            style={{ cursor: 'pointer' }}
-                                        >
-                                            <img src={product.image} alt={product.name} />
-                                        </div>
-
-                                        <p className="seeds-price">
-                                            Rs. {product.price ? product.price.toFixed(2) : "0.00"}
-                                        </p>
-
-                                        <div className="seeds-btn-row">
-                                            <button
-                                                type="button"
-                                                className={`seeds-btnall ${!product.inStock ? 'out-of-stock' : ''}`}
-                                                disabled={!product.inStock}
-                                                onClick={() => handleAddToCart(product)}
-                                            >
-                                                {product.inStock ? 'Add to Cart' : 'Out of Stock'}
-                                            </button>
-                                            {!product.inStock && (
-                                                <button
-                                                    type="button"
-                                                    className="seeds-notify-icon"
-                                                    onClick={() => handleNotifyMe(product)}
-                                                    aria-label="Notify me when back in stock"
-                                                >
-                                                    <Bell size={16} />
-                                                </button>
-                                            )}
-                                        </div>
-                                    </div>
+                                    <ProductCard
+                                        key={product.id}
+                                        product={product}
+                                        showFav={true}
+                                        isFav={isFavorite(product.id)}
+                                        onToggleFavorite={toggleFavorite}
+                                        onAddToCart={handleAddToCart}
+                                        onNotifyMe={!product.inStock ? handleNotifyMe : null}
+                                        onCardClick={(prod) => navigate(`/product/${prod.id}`, { state: { product: prod } })}
+                                    />
                                 ))
                             ) : (
-                                <p className="seeds-empty">No products found for selected filters.</p>
+                                <p className="prod-empty">No products found for selected filters.</p>
                             )}
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className='seeds-text'>
-                <h2 className='seeds-h2'>Recommendation For You</h2>
-                <div className='seeds-grid'>
+            <div className='prod-text'>
+                <h2 className='prod-h2'>Recommendation For You</h2>
+                <div className='prod-grid'>
                     {seedlist.map((product) => (
-                        <div className="seeds-card" key={product.id}>
-                            <div className="seeds-rating">
-                                <Star size={14} fill="#FFC107" stroke="#FFC107" />
-                                <span>{product.rating}</span>
-                            </div>
-
-                            <h3 className="seeds-name">{product.name}</h3>
-
-                            <div className="seeds-image-wrap">
-                                <img src={product.image} alt={product.name} />
-                            </div>
-
-                            <p className="seeds-price">
-                                Rs. {product.price ? product.price.toFixed(2) : "0.00"}
-                            </p>
-
-                            <div className="seeds-btn-row">
-                                {product.inStock ? (
-                                    <button
-                                        type="button"
-                                        className="seeds-btnall"
-                                        onClick={() => handleAddToCart(product)}
-                                    >
-                                        Add to Cart
-                                    </button>
-                                ) : (
-                                    <>
-                                        <button
-                                            type="button"
-                                            className="seeds-btnall notify-me"
-                                            onClick={() => handleNotifyMe(product)}
-                                        >
-                                            Notify Me
-                                        </button>
-                                        <button
-                                            type="button"
-                                            className="seeds-notify-icon"
-                                            onClick={() => handleNotifyMe(product)}
-                                            aria-label="Notify me when back in stock"
-                                        >
-                                            <Bell size={16} />
-                                        </button>
-                                    </>
-                                )}
-                            </div>
-                        </div>
+                        <ProductCard
+                            key={product.id}
+                            product={product}
+                            showFav={false}
+                            onAddToCart={handleAddToCart}
+                            onNotifyMe={handleNotifyMe}
+                        />
                     ))}
                 </div>
             </div>
 
-            <div className='seeds-got'>
-                <h2 className='seeds-h2'>Got Any Questions?</h2>
-                <div className='seeds-faq-list'>
-                    {faqs.map((faq, index) => (
-                        <div className='seeds-faq-item' key={index}>
-                            <button type='button' className='seeds-faq-question' onClick={() => toggleFaq(index)}>
-                                <span>{faq.question}</span>
-                                {openFaq === index ? <ChevronUp size={22} /> : <ChevronDown size={22} />}
-                            </button>
-                            {openFaq === index && (
-                                <p className="seeds-faq-answer">{faq.answer}</p>
-                            )}
-                            <div className="seeds-faq-divider"></div>
-                        </div>
-                    ))}
-                </div>
+            <div className='prod-got'>
+                <h2 className='prod-h2'>Got Any Questions?</h2>
+                <FaqAccordion faqs={faqs} />
             </div>
 
-            <div className="seeds-head">
-                {features.map((item) => (
-                    <div className="seeds-item" key={item.id}>
-                        <span className="seeds-icon">{item.icon}</span>
-                        <span className="seeds-label">{item.label}</span>
-                    </div>
-                ))}
-            </div>
+            <FeatureList features={features} />
         </>
     );
 };
